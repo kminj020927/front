@@ -1,0 +1,199 @@
+@font-face {
+  font-family: 'TTLaundryGothicB';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.postInfo_container {
+  font-family: 'TTLaundryGothicB';
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  margin-bottom: 20px;
+}
+
+.post-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.post-author, .post-count {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 작성 및 수정 날짜 */
+.post-dates {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 15px;
+}
+
+.post-dates span {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+/* 게시글 내용 */
+.post-content {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  height: 200px; 
+  overflow-y: auto; /* 내용이 넘칠 경우 스크롤 */
+}
+
+/* 버튼들을 오른쪽으로 배치 */
+.post-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+.btn--post {
+  padding: 10px 20px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'TTLaundryGothicB';
+  font-size: 16px;
+  margin: 10px 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn--post:hover {
+  background-color: lightseagreen;
+}
+
+
+/* ------------ 댓글 구현 ------------ */
+
+.comments-section {
+  margin-top: 40px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.comment-textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.btn--comment-submit {
+  align-self: flex-end;
+  padding: 5px 10px;  /* 버튼 크기 조정 */
+  border-radius: 4px; /* 버튼 모서리 둥글게 */  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.btn--comment-submit:hover {
+  background-color: lightseagreen;
+}
+
+
+/* 댓글 리스트 */
+.comments-list {
+  margin-top: 20px;
+}
+
+.comment {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.comment-date {
+  font-size: 10px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.comment-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.comment-actions button {
+  padding: 5px 10px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.comment-actions button:hover {
+  background-color: #3e8e41;
+}
+
+.btn--comment-cancel {
+  background-color: lightseagreen;
+  padding: 5px 10px;  /* 버튼 크기 조정 */
+  font-size: 16px;    /* 작은 폰트 크기 */
+  border-radius: 5px;
+}
+
+.btn--comment-cancel:hover {
+  background-color: #3e8e41;
+}
+
+/* 대댓글 폼 스타일 수정 */
+.reply-form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column; /* 세로 배치로 설정 */
+  gap: 10px; /* 입력란과 버튼 간의 간격 */
+}
+
+/* 버튼들을 오른쪽으로 정렬 */
+.reply-buttons {
+  display: flex;
+  justify-content: flex-end; /* 버튼을 오른쪽 끝으로 정렬 */
+  gap: 10px; /* 버튼 간 간격 */
+}
+
+
+/* 대댓글 작성 버튼 */
+.btn--reply {
+  padding: 5px 10px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn--reply:hover {
+  background-color: #3e8e41;
+}

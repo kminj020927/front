@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+// 공통 max-width 설정
+$max-width: 1400px;
+
+.home-slider {
+  width: 120%;
+  max-width: $max-width;
+  margin: 0 auto;
+
+  .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px; // 슬라이드 높이 설정
+    background-size: cover;
+    background-position: center;
+  }
+
+  .slide:first-child {
+    background-image: url('/assets/banner1.jpg'); // assets 폴더 내 banner1 이미지 경로
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+@keyframes smoothAppear {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+.home-wrapper {
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: $max-width; // 슬라이더와 동일한 가로폭으로 설정
+  margin: 0 auto; // 가운데 정렬
+  font-family: 'Noto Sans KR', sans-serif;
+
+  .home-title {
+    opacity: 0;
+    animation: smoothAppear 1s forwards;
+    animation-delay: 0.5s;
+    margin: 15px 0;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color:black;
+
+    span {
+      font-size: 2.7rem;
+      font-family: "Jua", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      color: black; // "가보자Go" 텍스트를 검정색으로 변경
+    }
+  }
+
+  .home-contents {
+    opacity: 0;
+    animation: smoothAppear 1s forwards;
+    animation-delay: 1s;
+    margin: 15px 0;
+    font-size: 1.5rem;
+    color: #282c34;
+  }
+
+  .write-post-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: lightseagreen;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: #76c776; /* 약간 더 짙은 초록색 */
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      background-color: #5fa65f; /* 클릭 시 색상 */
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// Layout Container
+.layout-container {
+  display: grid; // Grid 레이아웃 사용
+  grid-template-columns: 1fr 2fr; // 첫 번째 열은 1배수, 두 번째 열은 2배수
+  max-width: $max-width; // 슬라이더와 동일한 가로폭으로 설정
+  gap: 20px; // 요소 간의 간격 설정
+  margin: 0 auto; // 가운데 정렬
+  margin-top: 20px; // 위쪽 여백 추가
+
+  // 날씨 정보 스타일
+  .weather-info {
+    padding: 20px; // 여백 추가
+    background-color: #f5f5f5; // 배경색
+    border-radius: 10px; // 모서리 둥글게
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // 그림자 추가
+  }
+
+  .home-container {
+    padding: 20px; // 여백 추가
+    background-color: #ffffff; // 배경색
+    border-radius: 10px; // 모서리 둥글게
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // 그림자 추가
+    margin-top: 50px;
+
+    h1 {
+      margin-bottom: 20px; // 제목 아래 여백 추가
+      color: black; // 최근 게시글 제목을 검정색으로 변경
+    }
+
+    // 최근 게시글 제목 스타일
+    a {
+      display: flex; // 플렉스 박스 사용
+      justify-content: space-between; // 제목과 세부정보 간의 공간 분배
+      align-items: center; // 수직 정렬
+      margin: 10px 0; // 각 링크 사이 여백 추가
+      text-decoration: none; // 밑줄 제거
+      color: black; // 제목 색상 연두색
+      font-weight: bold; // 제목 두껍게
+      transition: color 0.3s; // 색상 전환 효과
+
+      &:hover {
+        color: darken(#4caf50, 10%); // 마우스 오버 시 색상 변경
+      }
+
+      .post-details {
+        margin-left: auto; // 오른쪽 끝으로 이동
+        font-size: 0.9rem; // 글씨 크기 조절
+        color: gray; // 글씨 색상 조절
+        display: flex; // 플렉스 박스 사용
+        gap: 10px; // 요소 간의 간격
+        align-items: center; // 수직 정렬
+      }
+    }
+  }
+
+  .post-item {
+    display: flex; // Use flexbox for alignment
+    align-items: center; // Vertically center items
+    margin-bottom: 10px; // Space between posts
+    padding: 15px; // Add padding for better spacing
+    border: 1px solid #e0e0e0; // Add a light border around each post
+    border-radius: 8px; // Rounded corners for posts
+    background-color: #fafafa; // Light background color for posts
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Add a subtle shadow for depth
+
+    .post-index {
+      margin-right: 8px; // Space between index number and title
+      font-weight: bold; // Make the index number bold
+    }
+
+    .post-title {
+      color: #4caf50; // Change title color to light green
+      text-decoration: none; // Remove underline from links
+      transition: color 0.3s; // Smooth transition for hover effect
+
+      &:hover {
+        color: #2e7d32; // Darker shade on hover
+      }
+    }
+
+    .post-details {
+      margin-left: auto; // Pushes the details to the right
+      font-size: 0.9rem; // Adjust font size
+      color: gray; // Change color for details
+    }
+  }
+}

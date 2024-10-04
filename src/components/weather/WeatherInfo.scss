@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+#weatherInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 20px;
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  #parentRegionSelect,
+  #childRegionSelect {
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    appearance: none;
+    background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%23333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><path d="M6 9l6-6M6 15l6-6"/></svg>') no-repeat right 10px center;
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+
+  #parentRegionSelect:focus,
+  #childRegionSelect:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+  }
+
+  #weatherInfoText {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+
+    .weather-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .weather-detail {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin: 10px 0;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .weather-label {
+      font-weight: bold;
+      color: #0073e6;
+      margin-right: 10px;
+      width: 100px; /* 필드 이름의 고정 너비 설정 /
+      text-align: right; / 필드 이름을 오른쪽 정렬 /
+    }
+
+    .weather-value {
+      flex-grow: 1;
+      text-align: left; / 데이터 값을 왼쪽 정렬 */
+    }
+  }
+}
+
+
+
+  #weatherSyncIcon {
+    font-size: 24px;
+    color: #333;
+    margin-top: 10px;
+  }

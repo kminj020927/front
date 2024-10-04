@@ -1,0 +1,217 @@
+@font-face {
+  font-family: 'TTLaundryGothicB';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.container {
+  font-family: 'TTLaundryGothicB';
+  width: 1600px;
+  margin: 50px auto;
+}
+
+.containerAbout {
+  font-family: 'TTLaundryGothicB';
+  width: 1600px;
+  margin: 50px auto;
+}
+
+.containerAbout p {
+  
+  margin: 30px; /* 아래 여백 */
+}
+
+hr { 
+  margin-bottom: 50px; 
+  border: 1px solid #ccc;
+}
+
+/* 게시판 제목과 버튼 레이아웃 */
+.title-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title-button-container h1 {
+  margin-right: 20px;
+  font-size: 32px;
+}
+
+/* 버튼 위치를 오른쪽 정렬 */
+.title-button-container button {
+  font-family: 'TTLaundryGothicB';
+  font-size: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+td {
+  padding: 30px;
+  font-size: 16px;
+  vertical-align: middle; /* 모든 셀의 내용을 가운데 정렬 */
+}
+
+button {
+  padding: 10px 20px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'TTLaundryGothicB';
+  font-size: 16px;
+  vertical-align: middle; /* 버튼도 가운데 정렬 */
+}
+
+button:hover {
+  background-color: lightseagreen;
+}
+
+
+.input-field, .textarea-field {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.textarea-field {
+  resize: none;
+}
+
+.table-cell {
+  padding: 30px 0;
+  text-align: center;
+  vertical-align: middle;
+  height: 50px;  /* 모든 셀의 높이를 동일하게 지정 */
+}
+
+
+.title-button-container {
+  display: flex;
+  justify-content: space-between; /* 왼쪽에 h1, 오른쪽에 검색 폼과 버튼 */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title-button-container h2 {
+  font-size: 32px;
+  font-family: 'TTLaundryGothicB';
+  margin-right: auto; /* 왼쪽에 위치 */
+}
+
+
+/* -------------- post 페이지 css -------------- */
+
+.search-and-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-form {
+  margin-right: 10px;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.search-button:hover {
+  background-color: lightseagreen;
+}
+
+/* 새 글 작성 버튼 */
+.title-button-container button {
+  font-family: 'TTLaundryGothicB';
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.title-button-container button:hover {
+  background-color: lightseagreen;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;  /* 화면에 고정 */
+  bottom: 0;        /* 화면의 하단에 위치 */
+  left: 0;          /* 화면의 왼쪽에 맞춤 */
+  width: 100%;      /* 전체 화면 너비를 차지 */
+  background-color: white; /* 배경색 지정 */
+  padding: 10px;    /* 패딩 추가 */
+  z-index: 1000;    /* 다른 요소들 위에 표시 */
+  border-top: 1px solid #ccc;  /* 위쪽에 경계선 추가 */
+}
+
+.pagination li {
+  margin: 0 5px;
+  list-style: none;  /* 점 제거 */
+}
+
+.pagination a {
+  font-family: 'TTLaundryGothicB';
+  font-size: 16px;
+  padding: 10px 15px;
+  color: lightseagreen;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.pagination a:hover {
+  background-color: lightseagreen;
+  color: white;
+}
+
+.active a {
+  background-color: lightseagreen;
+  color: white;
+}
+
+.pagination-prev, .pagination-next {
+  font-family: 'TTLaundryGothicB';
+  font-size: 16px;
+  padding: 10px 20px;
+  color: lightseagreen;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-prev:hover, .pagination-next:hover {
+  color: white;
+  font-size: calc(16px + 1px);  /* 글자 크기 1px 증가 */
+  transition: font-size 0.2s ease-in-out;  
+}
+
+

@@ -1,0 +1,135 @@
+.userInfoContainer {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 11px;
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.1);
+}
+
+.userProfile {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 11px;
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.1);
+}
+
+.profileImage {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.uploadLabel {
+    margin-top: 30px;
+    background-color: lightseagreen;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size : 16px;
+}
+
+.uploadLabel:hover {
+    background-color: white;
+    color: lightseagreen;
+}
+
+.uploadInput {
+    display: none;
+}
+
+.uploadButton {
+    margin-top: 30px;
+    background-color: lightseagreen;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size : 16px;
+}
+
+.uploadButton:hover {
+    background-color: white;
+    color: lightseagreen;
+    border: 1px solid lightseagreen;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* 버튼 간의 간격 설정 */
+    margin-top: 20px;
+}
+
+.userInfoForm {
+    flex-basis: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 11px;
+}
+
+.userInfo-title {
+    padding: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.userInfo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center; /* 입력 폼 및 버튼을 가운데 정렬 */
+}
+
+.userInfo-form div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 입력 폼을 가운데 정렬 */
+}
+
+.userInfo-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center; /* 라벨 가운데 정렬 */
+}
+
+.userInfo-form input {
+    width: 500px;
+    max-width: 100%;
+    padding: 1rem;
+    border-radius: 9px;
+    border: 1px solid lightgray;
+    text-align: center; /* 입력 텍스트 가운데 정렬 */
+}
+
+.userInfoBtn--form {
+    background-color: lightseagreen;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    width: 500px;
+    max-width: 100%;
+    align-self: center; /* 버튼 가운데 정렬 */
+}
+
+.userInfoBtn--form:hover {
+    background-color: red;
+    color: white;
+}
