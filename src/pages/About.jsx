@@ -1,5 +1,4 @@
 import React from 'react';
-import LoginContextConsumer from '../contexts/LoginContextConsumer';
 import Header from '../components/Header/Header';
 
 const About = () => {
@@ -15,6 +14,9 @@ const About = () => {
                 <p>- 게시글을 삭제하면 해당 게시글의 댓글도 같이 삭제</p>
                 <p>- 댓글의 수정, 삭제 버튼은 현재 로그인 유저의 게시물일 때만 보이도록 설정</p>
                 <p>- 관리자는 다른 모든 사용자의 댓글 삭제 가능</p>
+
+                <p>- 깃허브 테스트 tlqkf...</p>
+
             </div>
         </>
     )
