@@ -1,78 +1,72 @@
 import React, { useEffect, useState } from 'react'; 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
-import Slider from 'react-slick';
 import Header from '../components/Header/Header';
-import { useNavigate } from 'react-router-dom';
-import "./Home.scss";
 import WeatherInfo from '../components/weather/weather';
+import "./Home.scss";
 
 const Home = () => {
     const navigate = useNavigate(); 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 5000
-    };
     
+    const goToWeatherPage = () => {
+        navigate('/weather');  // Navigate to the weather page
+    };
+
     const goToPostForm = () => {
         navigate('/post');
     };
     
     const [posts, setPosts] = useState([]);  // 게시글 목록
+    const [regionWeather, setRegionWeather] = useState([]);  // Important regions' weather
 
     const getPosts = async () => {
         try {
-            const response = await axios.get('/post/postList'); // 전체 게시글 불러오기
-            const data = response.data; // 전체 데이터 가져오기
+            const response = await axios.get('/post/postList');
+            const data = response.data;
             setPosts(data.slice(0, 7));  // 최대 7개만 저장
         } catch (error) {
             console.error('Failed to fetch posts:', error);
         }
     };
 
+    const getRegionWeather = async () => {
+        try {
+            const response1 = await axios.get('/api/weather?regionId=1');  // Region 1
+            const response2 = await axios.get('/api/weather?regionId=2');  // Region 2
+            setRegionWeather([response1.data.weather, response2.data.weather]);
+        } catch (error) {
+            console.error('Failed to fetch region weather:', error);
+        }
+    };
+
     useEffect(() => {
         getPosts();
+        getRegionWeather();
     }, []);
 
     return (
         <>
             <Header />
             <div className='container'>
-                <div className="home-slider">
-                    <Slider {...settings}>
-                        <div className="slide">
-                            <div className="home-wrapper">
-                                <div className="home-title">
-                                    <span>가보자Go</span>에 오신걸 환영합니다
-                                </div>
-                                <div className="home-contents">
-                                    자유롭게 게시판에 글을 작성하고📝<br/>
-                                     댓글로 여러 의견을 나눠보세요✏️
-                                </div>
-                                <button className="write-post-btn" onClick={goToPostForm}>
-                                    게시글 작성하기
-                                </button>
-                            </div>
-                        </div>
-                        <div className="slide">
-                            <div className="home-wrapper">
-                                <h2>다양한 기능을 활용해보세요</h2>
-                                <p>다양한 정보를 지도에서 확인하고 공유해보세요.</p>
-                            </div>
-                        </div>
-                        <div className="slide">
-                            <div className="home-wrapper">
-                                <h2>커뮤니티에 참여하세요</h2>
-                                <p>관심 있는 주제에 대해 다른 사용자들과 의견을 나눠보세요.</p>
-                            </div>
-                        </div>
-                    </Slider>
+                <div className="home-wrapper">
+                    <div className="home-title">
+                        <span>가보자Go</span>에 오신걸 환영합니다
+                    </div>
+                    <div className="home-contents">
+                    저희 가보자Go는 여행자들을 위한  커뮤니티 사이트입니다<br/><br/>
+                    국내, 해외 모든 여행자들에게  필요하고,<br/> 
+                    부족한 여행 정보들을 제공하고 있습니다.<br/>
+                    새롭고 다양한 사람들과 소통하고 <br/>
+                    동행할 수 있습니다<br/>
+                    <br/>
+                    여러분의 재미있는 여행 이야기를 들려주세요<br/>
+
+                    </div>
+                    <button className="write-post-btn" onClick={goToPostForm}>
+                        가보자Go
+                    </button>
                 </div>
+                
                 <div className='layout-container'>
                     <WeatherInfo className="weather-info" />
                     <div className='home-container'>
@@ -83,7 +77,6 @@ const Home = () => {
                         ) : (
                             posts.map((post,index) => (
                                 <div key={post.id}>
-                                    
                                     <Link to={`/postInfo/${post.id}`}>
                                         <span className="post-index">{index + 1}. {post.title}</span>
                                         <div className="post-details">

@@ -29,7 +29,7 @@
 
 .uploadLabel {
     margin-top: 30px;
-    background-color: lightseagreen;
+    background-color: #3a9f97;
     color: white;
     padding: 10px;
     border-radius: 8px;
@@ -39,7 +39,7 @@
 
 .uploadLabel:hover {
     background-color: white;
-    color: lightseagreen;
+    color: #3a9f97;
 }
 
 .uploadInput {
@@ -48,7 +48,7 @@
 
 .uploadButton {
     margin-top: 30px;
-    background-color: lightseagreen;
+    background-color: #3a9f97;
     color: white;
     padding: 10px;
     border: none;
@@ -59,8 +59,8 @@
 
 .uploadButton:hover {
     background-color: white;
-    color: lightseagreen;
-    border: 1px solid lightseagreen;
+    color: #3a9f97;
+    border: 1px solid #3a9f97;
 }
 
 .buttonContainer {
@@ -119,7 +119,7 @@
 }
 
 .userInfoBtn--form {
-    background-color: lightseagreen;
+    background-color: #3a9f97;
     color: white;
     text-align: center;
     padding: 10px;
@@ -130,6 +130,6 @@
 }
 
 .userInfoBtn--form:hover {
-    background-color: red;
+    background-color: #3a9f97;
     color: white;
 }

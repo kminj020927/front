@@ -1,24 +1,23 @@
 @font-face {
-  font-family: 'TTLaundryGothicB';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+  font-family: 'Malgun Gothic';
+  src: local('Malgun Gothic'), url('https://fonts.googleapis.com/css2?family=Malgun+Gothic:wght@400;700&display=swap') format('woff2');
   font-weight: 700;
   font-style: normal;
 }
 
 .container {
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
   width: 1600px;
   margin: 50px auto;
 }
 
 .containerAbout {
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
   width: 1600px;
   margin: 50px auto;
 }
 
 .containerAbout p {
-  
   margin: 30px; /* 아래 여백 */
 }
 
@@ -38,11 +37,12 @@ hr {
 .title-button-container h1 {
   margin-right: 20px;
   font-size: 32px;
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
 }
 
 /* 버튼 위치를 오른쪽 정렬 */
 .title-button-container button {
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
   font-size: 16px;
 }
 
@@ -60,18 +60,18 @@ td {
 
 button {
   padding: 10px 20px;
-  background-color: lightseagreen;
+  background-color: #3a9f97;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
   font-size: 16px;
   vertical-align: middle; /* 버튼도 가운데 정렬 */
 }
 
 button:hover {
-  background-color: lightseagreen;
+  background-color: #3a9f97;
 }
 
 
@@ -81,6 +81,7 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
 }
 
 .textarea-field {
@@ -104,7 +105,7 @@ button:hover {
 
 .title-button-container h2 {
   font-size: 32px;
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
   margin-right: auto; /* 왼쪽에 위치 */
 }
 
@@ -125,28 +126,30 @@ button:hover {
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
 }
 
 .search-button {
   padding: 10px 20px;
-  background-color: lightseagreen;
+  background-color: #3a9f97;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
 }
 
 .search-button:hover {
-  background-color: lightseagreen;
+  background-color: #3a9f97;
 }
 
 /* 새 글 작성 버튼 */
 .title-button-container button {
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
   font-size: 16px;
   padding: 10px 20px;
-  background-color: lightseagreen;
+  background-color: #3a9f97;
   color: white;
   border: none;
   border-radius: 5px;
@@ -154,7 +157,7 @@ button:hover {
 }
 
 .title-button-container button:hover {
-  background-color: lightseagreen;
+  background-color: #3a9f97;
 }
 
 .pagination {
@@ -177,10 +180,10 @@ button:hover {
 }
 
 .pagination a {
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
   font-size: 16px;
   padding: 10px 15px;
-  color: lightseagreen;
+  color: #3a9f97;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -189,20 +192,20 @@ button:hover {
 }
 
 .pagination a:hover {
-  background-color: lightseagreen;
+  background-color: #3a9f97;
   color: white;
 }
 
 .active a {
-  background-color: lightseagreen;
+  background-color: #3a9f97;
   color: white;
 }
 
 .pagination-prev, .pagination-next {
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
   font-size: 16px;
   padding: 10px 20px;
-  color: lightseagreen;
+  color: #3a9f97;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -213,5 +216,3 @@ button:hover {
   font-size: calc(16px + 1px);  /* 글자 크기 1px 증가 */
   transition: font-size 0.2s ease-in-out;  
 }
-
-
