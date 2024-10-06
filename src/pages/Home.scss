@@ -22,6 +22,7 @@ $max-width: 1400px;
 .home-wrapper {
   text-align: center;
   font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 170px;
 
   .home-title {
     font-size: 2.4rem;
@@ -84,7 +85,7 @@ $max-width: 1400px;
   max-width: $max-width; // 슬라이더와 동일한 가로폭으로 설정
   gap: 20px; // 요소 간의 간격 설정
   margin: 0 auto; // 가운데 정렬
-  margin-top: 20px; // 위쪽 여백 추가
+  margin-top: 100px; // 위쪽 여백 추가
 
   // 날씨 정보 스타일
   .weather-info {

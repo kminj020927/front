@@ -35,15 +35,17 @@ const PostComForm = ({ onClose, existingPosts, setExistingPosts }) => {
     };
 
     const handleKeyDown = (e) => {
-      if (e.key !== "Enter") return;
-      const value = e.target.value;
-      if (!value.trim()) return;
-      setTags([...tags, value.trim()]); // 해시태그 추가
-      e.target.value = ""; // 입력 필드 초기화
+        if (e.key === "Enter") {
+            e.preventDefault(); // 엔터 키로 인한 폼 제출 방지
+            const value = e.target.value;
+            if (!value.trim()) return;
+            setTags([...tags, value.trim()]); // 해시태그 추가
+            e.target.value = ""; // 입력 필드 초기화
+        }
     };
 
     const removeTag = (index) => {
-      setTags(tags.filter((_, idx) => idx !== index)); // 해당 해시태그 삭제
+        setTags(tags.filter((_, idx) => idx !== index)); // 해당 해시태그 삭제
     };
 
     return (
@@ -101,20 +103,19 @@ const PostComForm = ({ onClose, existingPosts, setExistingPosts }) => {
                     />
                 </div>
                 <div className="form-group">
-                  
-                  <div className="tag-input-container">
-                    {tags.map((tag, idx) => (
-                        <div className="tag-item" key={idx}>
-                            <span>{tag}</span>
-                            <span onClick={() => removeTag(idx)}>&times;</span>
-                        </div>
-                    ))}
-                    <input
-                        className="tag-input"
-                        onKeyDown={handleKeyDown}
-                        placeholder={tags.length === 0 ? "엔터를 입력하여 관심사를 등록해주세요" : ""}
-                    />
-                  </div>
+                    <div className="tag-input-container">
+                        {tags.map((tag, idx) => (
+                            <div className="tag-item" key={idx}>
+                                <span>{tag}</span>
+                                <span onClick={() => removeTag(idx)}>&times;</span>
+                            </div>
+                        ))}
+                        <input
+                            className="tag-input"
+                            onKeyDown={handleKeyDown}
+                            placeholder={tags.length === 0 ? "엔터를 입력하여 관심사를 등록해주세요" : ""}
+                        />
+                    </div>
                 </div>
 
                 <button type="submit" className="submit-btn">모집 등록</button>

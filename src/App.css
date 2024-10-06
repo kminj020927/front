@@ -216,3 +216,55 @@ button:hover {
   font-size: calc(16px + 1px);  /* 글자 크기 1px 증가 */
   transition: font-size 0.2s ease-in-out;  
 }
+
+/* 동행 리스트*/
+.recruit-list {
+  margin-top: 20px; /* 제목과의 간격을 위한 위쪽 여백 */
+  padding: 20px; /* 내부 여백 추가 */
+  border: 1px solid #ccc; /* 리스트의 테두리 */
+  border-radius: 8px; /* 모서리를 둥글게 */
+  background-color: #f9f9f9; /* 연한 배경색 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 깊이를 위한 그림자 */
+}
+
+.recruit-list h2 {
+  font-size: 24px; /* 섹션 제목의 글꼴 크기 */
+  margin-bottom: 15px; /* 제목 아래 간격 */
+  font-family: 'Malgun Gothic', sans-serif; /* 글꼴 설정 */
+  color: #3a9f97; /* 제목 색상 */
+  text-align: center; /* 제목 중앙 정렬 */
+}
+
+.recruit-list ul {
+  list-style-type: none; /* 기본 리스트 스타일 제거 */
+  padding: 0; /* 여백 제거 */
+}
+
+.recruit-list li {
+  padding: 15px; /* 각 게시물의 여백 */
+  margin-bottom: 10px; /* 게시물 간 간격 */
+  background-color: white; /* 각 게시물의 배경색 */
+  border: 1px solid #ccc; /* 게시물의 테두리 */
+  border-radius: 5px; /* 모서리를 둥글게 */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* 깊이를 위한 그림자 */
+  transition: transform 0.2s; /* 호버 효과를 위한 애니메이션 */
+}
+
+.recruit-list li:hover {
+  transform: translateY(-2px); /* 호버 시 살짝 올라가는 효과 */
+}
+
+.recruit-list h3 {
+  font-size: 20px; /* 각 게시물 제목의 글꼴 크기 */
+  margin: 0; /* 여백 없음 */
+  color: #333; /* 게시물 제목의 색상 */
+}
+
+.recruit-list p {
+  margin: 5px 0; /* 단락 간 여백 */
+  color: #555; /* 설명 텍스트 색상 */
+}
+
+.recruit-list p:last-child {
+  margin-bottom: 0; /* 마지막 단락의 아래 여백 제거 */
+}
