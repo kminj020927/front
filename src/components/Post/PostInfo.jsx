@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import * as auth from '../../api/auth';  
+import { CiCalendar } from "react-icons/ci";
+import { FaLocationDot } from "react-icons/fa6";
+import { useNavigate, useParams } from 'react-router-dom';
+import * as auth from '../../api/auth';
 import Header from '../Header/Header';
-import './PostInfo.css'
-import { useNavigate } from 'react-router-dom';
+import './PostInfo.css';
+
 
 const PostInfo = () => {
     
@@ -267,7 +269,7 @@ const PostInfo = () => {
         if (userInfo?.username === "admin0515") {
             navigate(`/postUpdateForm`, { state: { postId: postInfo.id } });
         } else {
-            if (userInfo?.username !== postInfo?.writer) {
+            if (userInfo?.name !== postInfo?.writer) {
                 alert('수정 권한이 없습니다.');
                 navigate(`/postInfo/${id}`)
             } else {
@@ -302,11 +304,29 @@ const PostInfo = () => {
 
             <hr/>
 
+            <div className="info-box">
+                <span><CiCalendar />  {postInfo.startDate} ~ {postInfo.endDate}</span>
+                <span><FaLocationDot /> {postInfo.place}</span>
+            </div>
+
             <div className='post-content'>
+                <p>여행 소개</p><br/>
                 <p>{postInfo.content}</p>
             </div>
 
             <hr/>
+
+            <div className='hash-tag'>
+                <ul>
+                {postInfo.hashtags && postInfo.hashtags.length > 0 ? (
+                    postInfo.hashtags.map((tag, index) => (
+                    <li key={index}>#{tag}</li>
+                    ))
+                ) : (
+                    <p>해시태그가 없습니다.</p>
+                )}
+                </ul>
+            </div>
 
             <div className='post-buttons'>
                 <button type='submit' className='btn--post' onClick={handleEditClick}>게시글 수정</button>
