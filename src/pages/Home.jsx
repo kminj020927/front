@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'; 
-import { Link } from 'react-router-dom';
-import axios from 'axios'; 
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import Header from '../components/Header/Header';
-import { useNavigate } from 'react-router-dom';
-import "./Home.scss";
 import WeatherInfo from '../components/weather/weather';
+import "./Home.scss";
 
 const Home = () => {
     const navigate = useNavigate(); 

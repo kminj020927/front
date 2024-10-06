@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header/Header';
-import { useNavigate, Link } from 'react-router-dom';
-import * as auth from '../api/auth'; 
-import ReactPaginate from 'react-paginate'; // 페이징 라이브러리 추가
-import '../App.css'
 import { BsPencilSquare } from "react-icons/bs";
+import ReactPaginate from 'react-paginate'; // 페이징 라이브러리 추가
+import { Link, useNavigate } from 'react-router-dom';
+import * as auth from '../api/auth';
+import '../App.css';
+import Header from '../components/Header/Header';
 
 const Post = () => {
 
