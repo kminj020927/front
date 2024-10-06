@@ -217,7 +217,7 @@ button:hover {
   transition: font-size 0.2s ease-in-out;  
 }
 
-/* 동행 리스트*/
+/* -------------동행 리스트-------------*/
 .recruit-list {
   margin-top: 20px; /* 제목과의 간격을 위한 위쪽 여백 */
   padding: 20px; /* 내부 여백 추가 */
@@ -228,10 +228,10 @@ button:hover {
 }
 
 .recruit-list h2 {
-  font-size: 24px; /* 섹션 제목의 글꼴 크기 */
+  font-size: 30px; /* 섹션 제목의 글꼴 크기 */
   margin-bottom: 15px; /* 제목 아래 간격 */
   font-family: 'Malgun Gothic', sans-serif; /* 글꼴 설정 */
-  color: #3a9f97; /* 제목 색상 */
+  color: #3577c3; /* 제목 색상 */
   text-align: center; /* 제목 중앙 정렬 */
 }
 
@@ -242,8 +242,8 @@ button:hover {
 
 .recruit-list li {
   padding: 15px; /* 각 게시물의 여백 */
-  margin-bottom: 10px; /* 게시물 간 간격 */
-  background-color: white; /* 각 게시물의 배경색 */
+  margin-bottom: 15px; /* 게시물 간 간격 */
+  background-color: rgb(242, 247, 187); /* 각 게시물의 배경색 */
   border: 1px solid #ccc; /* 게시물의 테두리 */
   border-radius: 5px; /* 모서리를 둥글게 */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* 깊이를 위한 그림자 */
@@ -255,9 +255,9 @@ button:hover {
 }
 
 .recruit-list h3 {
-  font-size: 20px; /* 각 게시물 제목의 글꼴 크기 */
+  font-size: 30px; /* 각 게시물 제목의 글꼴 크기 */
   margin: 0; /* 여백 없음 */
-  color: #333; /* 게시물 제목의 색상 */
+  color: #3577c3; /* 게시물 제목의 색상 */
 }
 
 .recruit-list p {
@@ -267,4 +267,31 @@ button:hover {
 
 .recruit-list p:last-child {
   margin-bottom: 0; /* 마지막 단락의 아래 여백 제거 */
+}
+
+/* 게시물 내 해시태그 컨테이너 */
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em; /* 태그 간격 조절 */
+  margin-top: 10px; /* 태그 위쪽 여백 */
+}
+
+/* 게시물 내 해시태그 아이템 디자인 */
+.post-tags .tag-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3em 0.8em;
+  border-radius: 20px;
+  background-color: #91d5a6; /* 해시태그 배경색 */
+  font-size: 0.875rem;
+  color: #fff; /* 텍스트 색상을 흰색으로 */
+  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  transition: background-color 0.3s ease;
+}
+
+/* 게시물 내 해시태그 아이템 마우스 오버 시 색상 변화 */
+.post-tags .tag-item:hover {
+  background-color: #74b991; /* 마우스 오버 시 조금 더 진한 녹색 */
 }

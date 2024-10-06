@@ -7,6 +7,11 @@ import '../App.css';
 const PostCom = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [existingPosts, setExistingPosts] = useState([]);
+    
+    // 상태 추가: 검색어 및 날짜 선택
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedStartDate, setSelectedStartDate] = useState('');
+    const [selectedEndDate, setSelectedEndDate] = useState('');
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -15,6 +20,15 @@ const PostCom = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
+
+    // 필터링된 게시물
+    const filteredPosts = existingPosts.filter(post => {
+        const matchesTitle = !searchTerm || post.title.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesDate =
+            (!selectedStartDate || new Date(post.startDate) >= new Date(selectedStartDate)) &&
+            (!selectedEndDate || new Date(post.endDate) <= new Date(selectedEndDate));
+        return matchesTitle && matchesDate;
+    });
 
     return (
         <>
@@ -33,19 +47,47 @@ const PostCom = () => {
                         setExistingPosts={setExistingPosts} 
                     />
                 }
+
+                <div className="search-filters">
+                    <input
+                        type="text"
+                        placeholder="제목 검색..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <div className="date-filters">
+                        <input
+                            type="date"
+                            value={selectedStartDate}
+                            onChange={(e) => setSelectedStartDate(e.target.value)}
+                        />
+                        <span>~</span>
+                        <input
+                            type="date"
+                            value={selectedEndDate}
+                            onChange={(e) => setSelectedEndDate(e.target.value)}
+                        />
+                    </div>
+                </div>
+
                 <div className="recruit-list">
                     <h2>모집 중인 동행</h2>
-                    {existingPosts.length > 0 ? (
+                    {filteredPosts.length > 0 ? (
                         <ul>
-                            {existingPosts.map((post, index) => (
+                            {filteredPosts.map((post, index) => (
                                 <li key={index}>
                                     <h3>{post.title}</h3>
                                     <p>{post.description}</p>
-                                    <p>일정: {post.startDate} ~ {post.endDate}</p>
-                                    <p>최대 인원: {post.maxParticipants}</p>
-                                    {post.tags.length > 0 && (  // 해시태그가 있을 경우에만 렌더링
-                                        <p>관심사: {post.tags.join(', ')}</p>  // 해시태그 출력
-                                    )}
+                                    <p>{post.startDate} ~ {post.endDate}</p>
+                                    <p>모집 인원: {post.maxParticipants}명</p>
+
+                                    <div className="post-tags">
+                                        {post.tags.map((tag, idx) => (
+                                            <div className="tag-item" key={idx}>
+                                                {tag}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </li>
                             ))}
                         </ul>

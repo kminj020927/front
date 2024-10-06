@@ -16,6 +16,7 @@ import { PostSaveProvider } from './Board/Form/PostSaveProvider';
 import { UserListProvider } from './pages/UserListProvider';  
 import PostUpdateForm from './components/Role/PostUpdateForm';
 import PostCom from './pages/PostCom';
+import PostComInfo from './components/PostCom/PostComInfo';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/postInfo/:id" element={<PostInfo />} />
           <Route path="/postUpdateForm" element={<PostUpdateForm />} />
           <Route path="/postCom" element={<PostCom/>}/>
+          <Route path="/postInfo/:postId" element={<PostComInfo />} /> 
 
           {/* 게시글 작성 함수 넘기는 용도 */}
           <Route path="/post-write" element={
