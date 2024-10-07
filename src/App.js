@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import LoginContextProvider from './contexts/LoginContextProvider';
-import About from './pages/About';
 import Home from './pages/Home';
 import User from './pages/User';
 import Login from './pages/Login';
@@ -27,7 +26,6 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
           <Route path="/user" element={<User />} />
-          <Route path="/about" element={<About />} />
           <Route path="/post" element={<Post />} />
           <Route path="/postInfo/:id" element={<PostInfo />} />
           <Route path="/postUpdateForm" element={<PostUpdateForm />} />

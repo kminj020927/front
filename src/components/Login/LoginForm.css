@@ -71,3 +71,19 @@
     background-color: #3a9f97; 
     color: white;
 }
+
+/* 회원가입 링크 스타일 */
+.signup-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #3a9f97; /* Green color for the link */
+    font-weight: 600;
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease-in-out;
+}
+
+.signup-link:hover {
+    color: #285f58; /* Darker green on hover */
+    text-decoration: underline; /* Underline on hover */
+}

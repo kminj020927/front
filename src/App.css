@@ -6,19 +6,19 @@
 }
 
 .container {
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
+  font-family: 'Malgun Gothic', sans-serif;
   width: 1600px;
   margin: 50px auto;
 }
 
 .containerAbout {
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
+  font-family: 'Malgun Gothic', sans-serif;
   width: 1600px;
   margin: 50px auto;
 }
 
 .containerAbout p {
-  margin: 30px; /* 아래 여백 */
+  margin: 30px;
 }
 
 hr { 
@@ -37,116 +37,18 @@ hr {
 .title-button-container h1 {
   margin-right: 20px;
   font-size: 32px;
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
-}
-
-/* 버튼 위치를 오른쪽 정렬 */
-.title-button-container button {
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
-  font-size: 16px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-td {
-  padding: 30px;
-  font-size: 16px;
-  vertical-align: middle; /* 모든 셀의 내용을 가운데 정렬 */
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #3a9f97;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
-  font-size: 16px;
-  vertical-align: middle; /* 버튼도 가운데 정렬 */
-}
-
-button:hover {
-  background-color: #3a9f97;
-}
-
-
-.input-field, .textarea-field {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
-}
-
-.textarea-field {
-  resize: none;
-}
-
-.table-cell {
-  padding: 30px 0;
-  text-align: center;
-  vertical-align: middle;
-  height: 50px;  /* 모든 셀의 높이를 동일하게 지정 */
-}
-
-
-.title-button-container {
-  display: flex;
-  justify-content: space-between; /* 왼쪽에 h1, 오른쪽에 검색 폼과 버튼 */
-  align-items: center;
-  margin-bottom: 20px;
+  font-family: 'Malgun Gothic', sans-serif;
 }
 
 .title-button-container h2 {
   font-size: 32px;
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
-  margin-right: auto; /* 왼쪽에 위치 */
-}
-
-
-/* -------------- post 페이지 css -------------- */
-
-.search-and-button-container {
-  display: flex;
-  align-items: center;
-}
-
-.search-form {
-  margin-right: 10px;
-}
-
-.search-input {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
-}
-
-.search-button {
-  padding: 10px 20px;
-  background-color: #3a9f97;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
-}
-
-.search-button:hover {
-  background-color: #3a9f97;
+  font-family: 'Malgun Gothic', sans-serif;
+  margin-right: auto;
 }
 
 /* 새 글 작성 버튼 */
 .title-button-container button {
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
+  font-family: 'Malgun Gothic', sans-serif;
   font-size: 16px;
   padding: 10px 20px;
   background-color: #3a9f97;
@@ -160,27 +62,134 @@ button:hover {
   background-color: #3a9f97;
 }
 
+/* 입력 필드 스타일 */
+.input-field, .textarea-field {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Malgun Gothic', sans-serif;
+}
+
+.textarea-field {
+  resize: none;
+}
+
+.table-cell {
+  padding: 30px 0;
+  text-align: center;
+  vertical-align: middle;
+  height: 50px;
+}
+
+.recruit-list h2{
+  font-size: 25px;
+}
+/* 검색 및 필터링 스타일 */
+.search-filters {
+  display: flex;
+  justify-content: flex-end;  /* 오른쪽 정렬 */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-filters input[type="text"], .search-filters input[type="date"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Malgun Gothic', sans-serif;
+}
+
+.search-filters input[type="text"] {
+  margin-left: 10px; /* 텍스트 검색창에 약간의 여백 추가 */
+}
+
+/* 날짜 필터 스타일 */
+.date-filters {
+  display: flex;
+  align-items: center;
+}
+
+.date-filters span {
+  margin: 0 10px; /* 날짜 필터 사이 간격 */
+}
+.search-filters input[type="text"] {
+  margin-left: 100px; /* 날짜 필터와 제목 검색창 사이 간격 */
+}
+
+/* 카드 컨테이너 스타일 */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 반응형 그리드 */
+  gap: 20px; /* 카드 사이 간격 */
+  margin-top: 20px;
+}
+
+/* 카드 스타일 */
+.card {
+  background-color: rgba(225, 232, 154, 0.211); /* 카드 배경색 */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 깊이감 추가 */
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-8px); /* 카드 호버 시 살짝 올라가는 효과 */
+}
+
+/* 카드 내 제목 */
+.card h3 {
+  font-size: 24px;
+  color: #3a9f97;
+}
+
+/* 카드 내 설명 */
+.card p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* 태그 스타일 */
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tag-item {
+  background-color: #91d5a796;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* pagination 스타일 */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;  /* 화면에 고정 */
-  bottom: 0;        /* 화면의 하단에 위치 */
-  left: 0;          /* 화면의 왼쪽에 맞춤 */
-  width: 100%;      /* 전체 화면 너비를 차지 */
-  background-color: white; /* 배경색 지정 */
-  padding: 10px;    /* 패딩 추가 */
-  z-index: 1000;    /* 다른 요소들 위에 표시 */
-  border-top: 1px solid #ccc;  /* 위쪽에 경계선 추가 */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  z-index: 1000;
+  border-top: 1px solid #ccc;
 }
 
 .pagination li {
   margin: 0 5px;
-  list-style: none;  /* 점 제거 */
+  list-style: none;
 }
 
 .pagination a {
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
+  font-family: 'Malgun Gothic', sans-serif;
   font-size: 16px;
   padding: 10px 15px;
   color: #3a9f97;
@@ -202,7 +211,7 @@ button:hover {
 }
 
 .pagination-prev, .pagination-next {
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
+  font-family: 'Malgun Gothic', sans-serif;
   font-size: 16px;
   padding: 10px 20px;
   color: #3a9f97;
@@ -215,83 +224,4 @@ button:hover {
   color: white;
   font-size: calc(16px + 1px);  /* 글자 크기 1px 증가 */
   transition: font-size 0.2s ease-in-out;  
-}
-
-/* -------------동행 리스트-------------*/
-.recruit-list {
-  margin-top: 20px; /* 제목과의 간격을 위한 위쪽 여백 */
-  padding: 20px; /* 내부 여백 추가 */
-  border: 1px solid #ccc; /* 리스트의 테두리 */
-  border-radius: 8px; /* 모서리를 둥글게 */
-  background-color: #f9f9f9; /* 연한 배경색 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 깊이를 위한 그림자 */
-}
-
-.recruit-list h2 {
-  font-size: 30px; /* 섹션 제목의 글꼴 크기 */
-  margin-bottom: 15px; /* 제목 아래 간격 */
-  font-family: 'Malgun Gothic', sans-serif; /* 글꼴 설정 */
-  color: #3577c3; /* 제목 색상 */
-  text-align: center; /* 제목 중앙 정렬 */
-}
-
-.recruit-list ul {
-  list-style-type: none; /* 기본 리스트 스타일 제거 */
-  padding: 0; /* 여백 제거 */
-}
-
-.recruit-list li {
-  padding: 15px; /* 각 게시물의 여백 */
-  margin-bottom: 15px; /* 게시물 간 간격 */
-  background-color: rgb(242, 247, 187); /* 각 게시물의 배경색 */
-  border: 1px solid #ccc; /* 게시물의 테두리 */
-  border-radius: 5px; /* 모서리를 둥글게 */
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* 깊이를 위한 그림자 */
-  transition: transform 0.2s; /* 호버 효과를 위한 애니메이션 */
-}
-
-.recruit-list li:hover {
-  transform: translateY(-2px); /* 호버 시 살짝 올라가는 효과 */
-}
-
-.recruit-list h3 {
-  font-size: 30px; /* 각 게시물 제목의 글꼴 크기 */
-  margin: 0; /* 여백 없음 */
-  color: #3577c3; /* 게시물 제목의 색상 */
-}
-
-.recruit-list p {
-  margin: 5px 0; /* 단락 간 여백 */
-  color: #555; /* 설명 텍스트 색상 */
-}
-
-.recruit-list p:last-child {
-  margin-bottom: 0; /* 마지막 단락의 아래 여백 제거 */
-}
-
-/* 게시물 내 해시태그 컨테이너 */
-.post-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em; /* 태그 간격 조절 */
-  margin-top: 10px; /* 태그 위쪽 여백 */
-}
-
-/* 게시물 내 해시태그 아이템 디자인 */
-.post-tags .tag-item {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.3em 0.8em;
-  border-radius: 20px;
-  background-color: #91d5a6; /* 해시태그 배경색 */
-  font-size: 0.875rem;
-  color: #fff; /* 텍스트 색상을 흰색으로 */
-  font-family: 'Malgun Gothic', sans-serif; /* 폰트 변경 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-  transition: background-color 0.3s ease;
-}
-
-/* 게시물 내 해시태그 아이템 마우스 오버 시 색상 변화 */
-.post-tags .tag-item:hover {
-  background-color: #74b991; /* 마우스 오버 시 조금 더 진한 녹색 */
 }

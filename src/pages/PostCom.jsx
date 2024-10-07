@@ -8,7 +8,6 @@ const PostCom = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [existingPosts, setExistingPosts] = useState([]);
     
-    // 상태 추가: 검색어 및 날짜 선택
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedStartDate, setSelectedStartDate] = useState('');
     const [selectedEndDate, setSelectedEndDate] = useState('');
@@ -21,7 +20,6 @@ const PostCom = () => {
         setIsModalOpen(false);
     };
 
-    // 필터링된 게시물
     const filteredPosts = existingPosts.filter(post => {
         const matchesTitle = !searchTerm || post.title.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesDate =
@@ -73,9 +71,9 @@ const PostCom = () => {
                 <div className="recruit-list">
                     <h2>모집 중인 동행</h2>
                     {filteredPosts.length > 0 ? (
-                        <ul>
+                        <div className="card-container">
                             {filteredPosts.map((post, index) => (
-                                <li key={index}>
+                                <div className="card" key={index}>
                                     <h3>{post.title}</h3>
                                     <p>{post.description}</p>
                                     <p>{post.startDate} ~ {post.endDate}</p>
@@ -88,9 +86,9 @@ const PostCom = () => {
                                             </div>
                                         ))}
                                     </div>
-                                </li>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     ) : (
                         <p>모집 중인 동행이 없습니다.</p>
                     )}

@@ -27,8 +27,7 @@ const Header = () => {
           {/* 로그인 여부에 따라 조건부 렌더링 */}
           {!isLogin ? (
             <>
-              <li><Link to="/login">로그인</Link></li>
-              <li><Link to="/join">회원가입</Link></li>
+              
               <li className="dropdown">
                 {/* 게시판 버튼 클릭 시 드롭다운 토글 */}
                 <button className="dropbtn" onClick={toggleDropdown}>게시판</button>
@@ -39,7 +38,7 @@ const Header = () => {
                   </div>
                 )}
               </li>
-              <li><Link to="/about">소개</Link></li>
+              <li><Link to="/login">로그인</Link></li>
               <li><Link to="/admin">관리자</Link></li>
             </>
           ) : (
