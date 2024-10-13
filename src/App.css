@@ -111,7 +111,7 @@ hr {
 
 /* 검색 및 필터링 스타일 */
 .search-filters {
-  display: flex;
+  display: flex; 
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px;
@@ -242,5 +242,5 @@ hr {
 .pagination-prev:hover, .pagination-next:hover {
   color: white;
   font-size: calc(16px + 1px);
-  transition: font-size 0.2s ease-in-out;  
+  transition: font-size 0.2s ease-in-out;
 }
