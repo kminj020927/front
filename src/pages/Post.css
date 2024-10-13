@@ -1,0 +1,315 @@
+.recruit-list h2 {
+  font-size: 25px;
+}
+
+/* 카드 스타일 */
+.recruit-list li {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color:rgba(246, 250, 200, 0.77);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  overflow: hidden; /* 카드 영역 넘침 방지 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-overflow: ellipsis; /* 넘친 텍스트를 ...로 표시 */
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
+}
+
+.recruit-list li:hover {
+  transform: translateY(-2px);
+}
+
+/* 카드 내용 말줄임 설정 */
+.recruit-list li p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 3줄까지만 표시 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5em;
+  max-height: calc(1.5em * 3);
+  word-wrap: break-word;
+}
+
+/* 검색 및 필터링 스타일 */
+.search-filters {
+  display: flex; 
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-filters input[type="text"], .search-filters input[type="date"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Malgun Gothic', sans-serif;
+}
+
+.search-filters input[type="text"] {
+  margin-left: 100px; /* 날짜 필터와 제목 검색창 사이 간격 */
+}
+
+/* 날짜 필터 스타일 */
+.date-filters {
+  display: flex;
+  align-items: center;
+}
+
+.date-filters span {
+  margin: 0 10px;
+}
+/* 게시판 제목과 검색 및 작성 버튼 레이아웃 */
+.title-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-and-button-container {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Add some space between the search bar and button */
+}
+
+/* 검색 입력창 스타일 */
+.search-input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Malgun Gothic', sans-serif;
+}
+
+/* 새 글 작성 버튼 스타일 */
+.create-post-button {
+  font-family: 'Malgun Gothic', sans-serif;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #3a9f97;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-post-button:hover {
+  background-color: #2b7d72;
+}
+/* 카드 컨테이너 */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;  /* 왼쪽 정렬 */
+  gap: 20px;  /* 카드 사이의 간격 */
+}
+
+
+
+/* 반응형 처리 */
+@media (max-width: 1200px) {
+  .card {
+    flex-basis: calc(25% - 20px); /* 작은 화면에서는 4개씩 배치 */
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    flex-basis: calc(33.33% - 20px); /* 더 작은 화면에서는 3개씩 배치 */
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex-basis: calc(50% - 20px); /* 모바일 화면에서는 2개씩 배치 */
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    flex-basis: calc(100% - 20px); /* 매우 작은 화면에서는 1개씩 배치 */
+  }
+}
+/* 카드 스타일 */
+.card {
+  flex-basis: calc(20% - 20px);  /* 각 카드가 다섯 개가 한 줄에 고정되도록 20% - 여백 크기 */
+  background-color:#f4f3dcb3 ;
+  border-radius: 10px;
+  padding: 20px; /* 패딩을 약간 늘려줍니다 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 강도를 높임 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 그림자 효과 추가 */
+  min-height: 250px; /* 카드의 최소 높이 증가 */
+  position: relative; /* 상대 위치 설정 */
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 정렬 */
+  justify-content: space-between; /* 내용과 바닥을 분리 */
+  overflow: hidden; /* 카드 내용이 넘칠 경우 숨기기 */
+}
+
+/* 카드 제목 */
+.card h3 {
+  font-size: 24px;
+  color: #3a9f97;
+  margin-bottom: 10px; /* 제목과 다른 내용 간 간격 추가 */
+  font-weight: bold; /* 제목 두껍게 */
+}
+
+/* 제목과 내용 사이의 구분선 */
+.card .separator {
+  height: 2px; /* 구분선의 높이 */
+  background-color: #63a5a1ba; /* 구분선 색상 */
+  margin-bottom: 10px; /* 구분선과 내용 간의 간격 */
+}
+
+/* 카드 설명 */
+.card p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px; /* 설명과 다른 내용 간 간격 추가 */
+  line-height: 1.6; /* 줄 높이 증가 */
+}
+
+/* 카드의 추가 정보 */
+.card .post-details {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #777;
+}
+.card .bottom-details span {
+  display: block; /* 각 정보를 블록으로 만들어 줄 바꿈 */
+  margin-bottom: 5px; /* 공백 추가 */
+}
+
+/* 카드의 하단 정보 (여행 일정과 모집 인원) */
+.card .bottom-details {
+  margin-top: auto; /* 위쪽 내용과 간격을 둡니다 */
+  margin-top: 15px; /* 하단 정보와 카드 내용 간의 간격 */
+}
+
+/* 카드 hover 효과 */
+.card:hover {
+  transform: translateY(-5px); /* 마우스를 올렸을 때 카드가 위로 올라가는 효과 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 강화 */
+}
+
+/* 해시태그 스타일 */
+.tag-item {
+  background-color: #91d5a7; /* 해시태그 배경색 */
+  color: white; /* 텍스트 색상 */
+  padding: 5px 10px; /* 패딩 */
+  border-radius: 20px; /* 둥근 모서리 */
+  font-size: 14px; /* 텍스트 크기 */
+  line-height: 1.2; /* 줄 높이 */
+  margin: 2px; /* 카드 내 해시태그 간격 */
+}
+
+/* 카드의 해시태그 컨테이너 */
+.card .tags-container {
+  display: flex; /* 해시태그를 가로로 나열 */
+  flex-wrap: wrap; /* 해시태그가 공간에 따라 줄바꿈 */
+  margin-top: 10px; /* 해시태그와 카드 내용 간 간격 추가 */
+}
+
+
+
+/* Pagination 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  z-index: 1000;
+  border-top: 1px solid #ccc;
+}
+
+.pagination li {
+  margin: 0 5px;
+  list-style: none;
+}
+
+.pagination a {
+  font-family: 'Malgun Gothic', sans-serif;
+  font-size: 16px;
+  padding: 10px 15px;
+  color: #3a9f97;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.pagination a:hover {
+  background-color: #3a9f97;
+  color: white;
+}
+
+.active a {
+  background-color: #3a9f97;
+  color: white;
+}
+
+.pagination-prev, .pagination-next {
+  font-family: 'Malgun Gothic', sans-serif;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: #3a9f97;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-prev:hover, .pagination-next:hover {
+  color: white;
+  font-size: calc(16px + 1px);
+  transition: font-size 0.2s ease-in-out;
+}
+/* 모달창 배경 오버레이 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명한 어두운 배경 */
+  z-index: 999; /* 다른 요소 위에 표시 */
+}
+
+/* 모달창 스타일 */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 600px; /* 기본 크기 */
+  max-width: 90%; /* 화면 크기에 따라 최대 너비 설정 */
+  min-width: 300px; /* 최소 너비 설정 */
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: gray;
+}
+
+

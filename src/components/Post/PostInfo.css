@@ -1,12 +1,7 @@
-@font-face {
-  font-family: 'TTLaundryGothicB';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
+
 
 .postInfo_container {
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; ;
   max-width: 800px;
   margin: 30px auto;
   background-color: #ffffff;
@@ -71,7 +66,7 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-family: 'TTLaundryGothicB';
+  font-family: 'Malgun Gothic', sans-serif; ;
   font-size: 16px;
   margin: 10px 5px;
   transition: background-color 0.3s ease;

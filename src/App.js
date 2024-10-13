@@ -16,6 +16,9 @@ import { UserListProvider } from './pages/UserListProvider';
 import PostUpdateForm from './components/Role/PostUpdateForm';
 import PostCom from './pages/PostCom';
 import PostComInfo from './components/PostCom/PostComInfo';
+import Post77 from'./pages/post77';
+import KakaoMap from "./components/Map/KakaoMap";
+
 
 const App = () => {
   return (
@@ -31,6 +34,9 @@ const App = () => {
           <Route path="/postUpdateForm" element={<PostUpdateForm />} />
           <Route path="/postCom" element={<PostCom/>}/>
           <Route path="/postInfo/:postId" element={<PostComInfo />} /> 
+          <Route path="/post77" element={<Post77 />} />
+          <Route path="/kakao/search" element={<KakaoMap />} />
+
 
           {/* 게시글 작성 함수 넘기는 용도 */}
           <Route path="/post-write" element={

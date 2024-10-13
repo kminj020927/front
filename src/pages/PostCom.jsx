@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Header/Header";
 import { BsPencilSquare } from "react-icons/bs";
 import PostComForm from "../components/PostCom/PostComForm";
-import '../App.css';
+import './Post.css';
 
 const PostCom = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,14 +38,19 @@ const PostCom = () => {
                     <button onClick={openModal}>모집하기</button>
                 </div>
 
-                {isModalOpen && 
-                    <PostComForm 
-                        onClose={closeModal} 
-                        existingPosts={existingPosts} 
-                        setExistingPosts={setExistingPosts} 
-                    />
-                }
-
+                {isModalOpen && (
+                    <>
+                        <div className="modal-overlay" onClick={closeModal}></div>
+                        <div className="modal-content">
+                            <button className="modal-close" onClick={closeModal}>X</button>
+                            <PostComForm 
+                                onClose={closeModal} 
+                                existingPosts={existingPosts} 
+                                setExistingPosts={setExistingPosts} 
+                            />
+                        </div>
+                    </>
+                )}
                 <div className="search-filters">
                     <input
                         type="text"
@@ -75,6 +80,7 @@ const PostCom = () => {
                             {filteredPosts.map((post, index) => (
                                 <div className="card" key={index}>
                                     <h3>{post.title}</h3>
+                                    <div className="separator"></div>
                                     <p>{post.description}</p>
                                     <p>{post.startDate} ~ {post.endDate}</p>
                                     <p>모집 인원: {post.maxParticipants}명</p>

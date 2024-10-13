@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react'; 
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
+import { PiBackpackDuotone } from "react-icons/pi";
+import { CiCalendar } from "react-icons/ci";
+import { LuSubtitles } from "react-icons/lu";
 
 import Header from '../components/Header/Header';
 import WeatherInfo from '../components/weather/weather';
@@ -17,15 +20,19 @@ const Home = () => {
     const goToPostForm = () => {
         navigate('/post');
     };
+    const goToPost77 = () => {
+        navigate('/post77');
+    };
+    
     
     const [posts, setPosts] = useState([]);  // 게시글 목록
     const [regionWeather, setRegionWeather] = useState([]);  // Important regions' weather
 
     const getPosts = async () => {
         try {
-            const response = await axios.get('/post/postList');
-            const data = response.data;
-            setPosts(data.slice(0, 7));  // 최대 7개만 저장
+            const response = await axios.get('/post/postList'); // 전체 게시글 불러오기
+            const data = response.data; // 전체 데이터 가져오기
+            setPosts(data.slice(0, 3));  // 최대 3개만 저장
         } catch (error) {
             console.error('Failed to fetch posts:', error);
         }
@@ -72,23 +79,35 @@ const Home = () => {
                 <div className='layout-container'>
                     <WeatherInfo className="weather-info" />
                     <div className='home-container'>
-                        <h2>최근 게시글</h2><br/>
+                        <h2>최근 동행 게시글</h2><br/>
                         <hr/>
                         {posts.length === 0 ? (
-                            <div>게시글이 없습니다.</div>
-                        ) : (
-                            posts.map((post,index) => (
-                                <div key={post.id}>
-                                    <Link to={`/postInfo/${post.id}`}>
-                                        <span className="post-index">{index + 1}. {post.title}</span>
-                                        <div className="post-details">
-                                            <span>작성자 : {post.writer}</span>
-                                            <span>{new Date(post.createdDate).toLocaleDateString()}</span>
-                                        </div>
-                                    </Link>
-                                </div>
-                            ))
-                        )}
+                                <div>게시글이 없습니다.</div>
+                            ) : (
+                                posts.map((post) => (
+                                    <div className="post-card" key={post.id}>
+                                        <Link to={`/postInfo/${post.id}`}>
+                                            <div className="post-card-content">
+                                                {/* 제목 */}
+                                                <div className="post-card-title">
+                                                    <LuSubtitles className="icon" /> {post.title}
+                                                </div>
+
+                                                {/* 기간 */}
+                                                <div className="post-card-period">
+                                                    <span><CiCalendar className="icon" /> {post.startDate} ~ {post.endDate}</span>  
+                                                </div><br/>
+
+                                                {/* 작성자와 작성 기간 */}
+                                                <div className="post-card-details">
+                                                    <div>{new Date(post.createdDate).toLocaleDateString()} {post.writer} </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </Link>
+                                    </div>
+                                ))
+                            )}
                     </div>
                 </div>
             </div>

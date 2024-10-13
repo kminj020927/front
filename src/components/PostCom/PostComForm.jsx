@@ -113,7 +113,7 @@ const PostComForm = ({ onClose, existingPosts, setExistingPosts }) => {
                         <input
                             className="tag-input"
                             onKeyDown={handleKeyDown}
-                            placeholder={tags.length === 0 ? "엔터를 입력하여 관심사를 등록해주세요" : ""}
+                            placeholder={tags.length === 0 ? "Enter를 입력하여 관심사를 등록해주세요" : ""}
                         />
                     </div>
                 </div>
