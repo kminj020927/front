@@ -14,7 +14,6 @@ const PostForm = () => {
 
     const [startDate, setStartDate] = useState(); // 여행 시작 일
     const [endDate, setEndDate] = useState(); // 여행 마치는 일
-
     const [tags, setTags] = useState([]); // 태그들을 관리할 state
     const [inputValue, setInputValue] = useState(''); // 입력 필드의 값을 관리할 state
     const postSave = usePostSave();
@@ -27,10 +26,6 @@ const PostForm = () => {
         const writer = userInfo?.name;
         const mbti = form.mbti.value;
         const place = form.place.value;
-        
-        // 날짜를 가져오고 포맷
-        const startDate = form.startDate.value;
-        const endDate = form.endDate.value;
 
         // JSON 형태로 변환
         const postData = {
@@ -55,6 +50,16 @@ const PostForm = () => {
         const endDateFormat = moment(e[1]).format('YYYY/MM/DD');
         setStartDate(startDateFormat);
         setEndDate(endDateFormat);
+    };
+
+    // 날짜에 주말 클래스 추가
+    const tileClassName = ({ date, view }) => {
+        const day = date.getDay(); // 0: Sunday, 6: Saturday
+        if (view === 'month') {
+            if (day === 6) return 'react-calendar__tile--weekend react-calendar__tile--Saturday'; // Saturday
+            if (day === 0) return 'react-calendar__tile--weekend react-calendar__tile--Sunday'; // Sunday
+        }
+        return null; // Default
     };
 
     // 태그 입력 필드의 값이 변경될 때 호출
@@ -101,7 +106,7 @@ const PostForm = () => {
                                     <Calendar
                                         onChange={changeDate}
                                         selectRange={true}
-                                        formatDay={(locale, date) => moment(date).format('DD')}
+                                        tileClassName={tileClassName}
                                     />
                                     <div className='date-input-container'>
                                         <input

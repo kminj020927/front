@@ -15,6 +15,17 @@ const WeatherInfo = () => {
             try {
                 const response = await axios.get('/api/regions');
                 setRegions(response.data);
+                // 부모 지역과 자식 지역을 초기화합니다
+                if (response.data.length > 0) {
+                    const initialParentRegion = response.data[0].parentRegion; // 첫 번째 부모 지역 선택
+                    setSelectedParentRegion(initialParentRegion);
+                    setChildRegions(response.data.filter(region => region.parentRegion === initialParentRegion));
+                    
+                    // 첫 번째 자식 지역 선택
+                    if (childRegions.length > 0) {
+                        setSelectedChildRegion(childRegions[0].id); // 첫 번째 자식 지역 선택
+                    }
+                }
             } catch (error) {
                 console.error('Error fetching regions:', error);
             }
@@ -44,8 +55,14 @@ const WeatherInfo = () => {
     const handleParentRegionChange = (e) => {
         const parentRegion = e.target.value;
         setSelectedParentRegion(parentRegion);
-        setSelectedChildRegion('');
-        setChildRegions(regions.filter(region => region.parentRegion === parentRegion));
+        setSelectedChildRegion(''); // Reset child region
+        const newChildRegions = regions.filter(region => region.parentRegion === parentRegion);
+        setChildRegions(newChildRegions);
+
+        // Select the first child region if available
+        if (newChildRegions.length > 0) {
+            setSelectedChildRegion(newChildRegions[0].id); // Select first child region
+        }
     };
 
     const handleChildRegionChange = (e) => {

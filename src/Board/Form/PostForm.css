@@ -1,248 +1,246 @@
-@font-face {
-    font-family: 'TTLaundryGothicB';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .post-insert-form {
-    font-family: 'TTLaundryGothicB', sans-serif;
-    width: 800px; /* Reduced width for a cleaner layout */
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #fafafa;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post-insert-form h1 {
-    font-size: 32px;
-    margin-bottom: 30px;
-    color: #333;
-  }
-
-  /* 기존 스타일을 유지하면서 start-date와 end-date 스타일 추가 */
-.start-date, .end-date {
-    display: inline-block; /* 나란히 배치 */
-    width: calc(50% - 10px); /* 각 필드가 50%의 너비를 가지도록 설정 */
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    margin-bottom: 20px; /* 다른 폼 필드와 같은 간격을 유지 */
-    margin-right: 10px; /* 필드 간 간격 추가 */
-    box-sizing: border-box; /* 패딩을 포함하여 너비 계산 */
-    transition: border-color 0.3s ease;
+/* Use Malgun Gothic for the entire form */
+body, h1, h2, h3, p, input, textarea, select {
+  font-family: 'Malgun Gothic', sans-serif;
 }
 
-.start-date:last-child {
-    margin-right: 0; /* 마지막 필드의 오른쪽 여백 제거 */
+.post-insert-form {
+  font-family: 'Malgun Gothic', sans-serif;
+  width: 800px; /* Reduced width for a cleaner layout */
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* input-field 스타일과 동일하게 focus 스타일 추가 */
-.start-date:focus, .end-date:focus {
-    border-color: #7fb77e;
-    outline: none;
+.post-insert-form h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #333;
 }
 
-  hr { 
-    margin-bottom: 40px; 
-    border: 1px solid #ddd;
-  }
-  
-  table {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-  
-  td {
-    padding: 15px;
-    font-size: 16px;
-    vertical-align: middle;
-  }
-  
-  .input-field, .textarea-field {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .input-field:focus, .textarea-field:focus {
-    border-color: #7fb77e;
-    outline: none;
-  }
-  
-  .textarea-field {
-    resize: vertical;
-    height: 100px;
-  }
-  
-  .button-container {
-    text-align: right;
-    padding-right: 10px;
-  }
-  
-  .submit-button {
-    padding: 12px 30px;
-    background-color: lightseagreen;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-button:hover {
-    background-color: lightseagreen;
-  }
-  
-  .react-calendar {
-    width: 100%;
-    max-width: 500px;
-    background: #ffffff;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    font-family: 'TTLaundryGothicB', sans-serif;
+hr {
+  margin-bottom: 40px; 
+  border: 1px solid #ddd;
 }
 
-.react-calendar__tile {
-    padding: 15px 0;
-    text-align: center;
-    background: none;
-    border: none;
-    border-radius: 8px;
-    color: #333;
-    font-size: 16px;
-    font-weight: 500;
-    transition: background-color 0.2s ease, color 0.2s ease;
+table {
+  width: 100%;
+  margin-bottom: 30px;
 }
 
-.react-calendar__tile:enabled:hover,
-.react-calendar__tile:enabled:focus {
-    background-color: #f1f1f1;
+td {
+  padding: 15px;
+  font-size: 16px;
+  vertical-align: middle;
 }
 
-.react-calendar__tile--now {
-    background-color: lightseagreen;
-    color: white;
-    border-radius: 8px;
+.input-field, .textarea-field {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
-.react-calendar__tile--now:enabled:hover,
-.react-calendar__tile--now:enabled:focus {
-    background-color: lightseagreen;
+.input-field:focus, .textarea-field:focus {
+  border-color: #7fb77e;
+  outline: none;
 }
 
-.react-calendar__tile--active {
-    background-color: #7fb77e;
-    color: white;
-    border-radius: 8px;
-    font-weight: bold;
+.textarea-field {
+  resize: vertical;
+  height: 100px;
 }
 
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-    background-color: lightseagreen;
+.button-container {
+  text-align: right;
+  padding-right: 10px;
 }
 
+.submit-button {
+  padding: 12px 30px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: lightseagreen;
+}
+.react-calendar {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Calendar Navigation Styles */
 .react-calendar__navigation button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: lightseagreen;
-    font-weight: bold;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 20px;
+  color: lightseagreen;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .react-calendar__navigation button:enabled:hover {
-    background-color: #e9f5e9;
-    border-radius: 6px;
+  background-color: #e9f5e9;
+  border-color: #7fb77e; /* Hover border color */
 }
 
+/* Customize the Tile Styles */
+.react-calendar__tile {
+  padding: 15px 0;
+  text-align: center;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Differentiate Weekend Colors */
+.react-calendar__tile--weekend {
+  color: #333; /* Default color */
+}
+
+.react-calendar__tile--weekend.react-calendar__tile--Saturday {
+  color: #2b97f6; /* Blue for Saturdays */
+}
+
+.react-calendar__tile--weekend.react-calendar__tile--Sunday {
+  color: #ff0000; /* Red for Sundays */
+}
+
+.react-calendar__tile:hover {
+  background-color: #f1f1f1; /* General hover effect for weekdays */
+  border-color: #ddd; /* Hover border color */
+}
+
+/* Selected tile styles */
+.react-calendar__tile--active {
+  background-color: #7fb77e; /* Green background for selected date */
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Active tile hover effect */
+.react-calendar__tile--active:hover {
+  background-color: #66a065; /* Darker green on hover */
+}
+
+/* Selected date range styles */
+.react-calendar__tile--range {
+  background-color: rgba(127, 183, 126, 0.5); /* Light green for selected date range */
+  color: white;
+}
+
+/* Today tile styles */
+.react-calendar__tile--now {
+  background-color: lightseagreen; /* Light green for today's date */
+  color: white;
+  border-radius: 8px;
+}
+
+/* Weekday headers */
 .react-calendar__month-view__weekdays {
-    text-align: center;
-    font-weight: bold;
-    font-size: 14px;
-    color: #777;
-    padding-bottom: 10px;
-    text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #777;
+  padding-bottom: 10px;
+  text-transform: uppercase;
 }
 
-.react-calendar__month-view__days__day--weekend {
-    color: #ef5350; /* Highlight weekends */
+/* Additional styling for selected date range */
+.react-calendar__tile--active.react-calendar__tile--range {
+  background-color: rgba(127, 183, 126, 0.8); /* Darker light green for active date range */
 }
+
+/* Today tile styles for clarity */
+.react-calendar__tile--now {
+  background-color: lightseagreen; /* Light green for today's date */
+  color: white;
+  border-radius: 8px;
+}
+
 
 /* 전체 태그 입력 컨테이너 */
 .tag-input-container {
-    width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* 태그 입력 필드 스타일 */
-  .tag-input {
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #ffffff;
-  }
-  
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 태그 입력 필드 스타일 */
+.tag-input {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #ffffff;
+}
+
 .tag-input-field {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    margin-bottom: 10px; 
-  }
-  
-  /* 태그 리스트 */
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap : 5px;
-  }
-  
-  /* 태그 버튼 */
-  .tag {
-    display: inline-block;
-    background-color: #e0e0e0;
-    border-radius: 20px;
-    padding: 8px 12px;
-    font-size: 13px;
-    color: #333;
-    position: relative;
-  }
-  
-  /* 태그 x 삭제 버튼*/
-  .delete-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #888;
-    margin-left: 4px;
-    font-size: 10px;
-    padding : 5px;
-  }
-  
-  .delete-button:hover {
-    color: #ff0000;
-  }
-  
-  
-  
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 10px; 
+}
+
+/* 태그 리스트 */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* 태그 버튼 */
+.tag {
+  display: inline-block;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #333;
+  position: relative;
+}
+
+/* 태그 x 삭제 버튼 */
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  margin-left: 4px;
+  font-size: 10px;
+  padding: 5px;
+}
+
+.delete-button:hover {
+  color: #ff0000;
+}
