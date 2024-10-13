@@ -5,13 +5,7 @@
   font-style: normal;
 }
 
-.container {
-  font-family: 'Malgun Gothic', sans-serif;
-  width: 1600px;
-  margin: 50px auto;
-}
-
-.containerAbout {
+.container, .containerAbout {
   font-family: 'Malgun Gothic', sans-serif;
   width: 1600px;
   margin: 50px auto;
@@ -34,19 +28,14 @@ hr {
   margin-bottom: 20px;
 }
 
-.title-button-container h1 {
-  margin-right: 20px;
-  font-size: 32px;
-  font-family: 'Malgun Gothic', sans-serif;
-}
-
+.title-button-container h1,
 .title-button-container h2 {
   font-size: 32px;
   font-family: 'Malgun Gothic', sans-serif;
   margin-right: auto;
+  
 }
 
-/* 새 글 작성 버튼 */
 .title-button-container button {
   font-family: 'Malgun Gothic', sans-serif;
   font-size: 16px;
@@ -59,7 +48,7 @@ hr {
 }
 
 .title-button-container button:hover {
-  background-color: #3a9f97;
+  background-color: #2b7d72;
 }
 
 /* 입력 필드 스타일 */
@@ -83,13 +72,47 @@ hr {
   height: 50px;
 }
 
-.recruit-list h2{
+.recruit-list h2 {
   font-size: 25px;
 }
+
+/* 카드 스타일 */
+.recruit-list li {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: rgb(242, 247, 187);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  overflow: hidden; /* 카드 영역 넘침 방지 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-overflow: ellipsis; /* 넘친 텍스트를 ...로 표시 */
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
+}
+
+.recruit-list li:hover {
+  transform: translateY(-2px);
+}
+
+/* 카드 내용 말줄임 설정 */
+.recruit-list li p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 3줄까지만 표시 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5em;
+  max-height: calc(1.5em * 3);
+  word-wrap: break-word;
+}
+
 /* 검색 및 필터링 스타일 */
 .search-filters {
   display: flex;
-  justify-content: flex-end;  /* 오른쪽 정렬 */
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -103,7 +126,7 @@ hr {
 }
 
 .search-filters input[type="text"] {
-  margin-left: 10px; /* 텍스트 검색창에 약간의 여백 추가 */
+  margin-left: 100px; /* 날짜 필터와 제목 검색창 사이 간격 */
 }
 
 /* 날짜 필터 스타일 */
@@ -113,40 +136,36 @@ hr {
 }
 
 .date-filters span {
-  margin: 0 10px; /* 날짜 필터 사이 간격 */
-}
-.search-filters input[type="text"] {
-  margin-left: 100px; /* 날짜 필터와 제목 검색창 사이 간격 */
+  margin: 0 10px;
 }
 
-/* 카드 컨테이너 스타일 */
+/* 카드 컨테이너 */
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 반응형 그리드 */
-  gap: 20px; /* 카드 사이 간격 */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
   margin-top: 20px;
 }
 
 /* 카드 스타일 */
 .card {
-  background-color: rgba(225, 232, 154, 0.211); /* 카드 배경색 */
+  background-color: rgba(225, 232, 154, 0.211);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 깊이감 추가 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-8px); /* 카드 호버 시 살짝 올라가는 효과 */
+  transform: translateY(-8px);
 }
 
-/* 카드 내 제목 */
 .card h3 {
   font-size: 24px;
   color: #3a9f97;
 }
 
-/* 카드 내 설명 */
 .card p {
   font-size: 16px;
   color: #555;
@@ -168,7 +187,7 @@ hr {
   font-size: 14px;
 }
 
-/* pagination 스타일 */
+/* Pagination 스타일 */
 .pagination {
   display: flex;
   justify-content: center;
@@ -222,6 +241,6 @@ hr {
 
 .pagination-prev:hover, .pagination-next:hover {
   color: white;
-  font-size: calc(16px + 1px);  /* 글자 크기 1px 증가 */
+  font-size: calc(16px + 1px);
   transition: font-size 0.2s ease-in-out;  
 }
