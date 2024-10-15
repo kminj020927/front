@@ -28,6 +28,7 @@ const PostCom = () => {
         return matchesTitle && matchesDate;
     });
 
+
     return (
         <>
             <Header />
@@ -36,13 +37,13 @@ const PostCom = () => {
                     <BsPencilSquare style={{ margin: '15px' }} />
                     <h2>동행 모집</h2>
                     <button onClick={openModal}>모집하기</button>
+                
                 </div>
 
                 {isModalOpen && (
                     <>
                         <div className="modal-overlay" onClick={closeModal}></div>
                         <div className="modal-content">
-                            <button className="modal-close" onClick={closeModal}>X</button>
                             <PostComForm 
                                 onClose={closeModal} 
                                 existingPosts={existingPosts} 
@@ -80,7 +81,7 @@ const PostCom = () => {
                             {filteredPosts.map((post, index) => (
                                 <div className="card" key={index}>
                                     <h3>{post.title}</h3>
-                                    <div className="separator"></div>
+                                    <BsPencilSquare style={{ margin: '15px' }} />
                                     <p>{post.description}</p>
                                     <p>{post.startDate} ~ {post.endDate}</p>
                                     <p>모집 인원: {post.maxParticipants}명</p>

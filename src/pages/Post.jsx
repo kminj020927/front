@@ -1,19 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { BsPencilSquare } from "react-icons/bs";
-import ReactPaginate from 'react-paginate';
+import ReactPaginate from 'react-paginate'; 
 import { Link, useNavigate } from 'react-router-dom';
 import * as auth from '../api/auth';
 import './Post.css';
 import Header from '../components/Header/Header';
+import { MdContentPaste } from "react-icons/md";
+import { TbPencilCheck } from "react-icons/tb";
+import { CiCalendar } from "react-icons/ci";
+import { LuSubtitles } from "react-icons/lu";
 
+//자유게시판
 const Post = () => {
     const navigate = useNavigate(); 
+
     const [postList, setPostList] = useState([]); 
     const [userInfo, setUserInfo] = useState();
+
     const [searchTerm, setSearchTerm] = useState(''); 
     const [filteredPosts, setFilteredPosts] = useState([]);
+
+    const [startDate, setStartDate] = useState(''); // 필터링할 시작 날짜
+    const [endDate, setEndDate] = useState(''); // 필터링할 종료 날짜
+
     const [currentPage, setCurrentPage] = useState(0);
     const postsPerPage = 8;
+
+    // 각 게시글의 이미지 상태를 관리하기 위한 상태 추가
+    const [postImages, setPostImages] = useState({});
 
     const getPostList = async () => {
         try {
@@ -21,6 +35,11 @@ const Post = () => {
             const data = response.data;
             setPostList(data);  
             setFilteredPosts(data); 
+
+            // 게시글 목록을 가져온 후 각 게시글의 이미지를 불러옴
+            data.forEach(post => {
+                fetchPostImage(post.id); // 각 게시글의 이미지를 비동기로 불러옴
+            });
         } catch (error) {
             console.error('Failed to fetch post list:', error);
         }
@@ -41,7 +60,9 @@ const Post = () => {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0'); 
         const day = String(date.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
     };
 
     useEffect(() => {
@@ -51,16 +72,30 @@ const Post = () => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const filtered = postList.filter(post => 
-            post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            post.content.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+        
+        const filtered = postList.filter(post => {
+            const postDate = new Date(post.createdDate); // 게시글 작성 날짜
+            const isWithinDateRange = (
+                (!startDate || postDate >= new Date(startDate)) && 
+                (!endDate || postDate <= new Date(endDate))
+            );
+            const matchesSearchTerm = (
+                post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                post.content.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            return isWithinDateRange && matchesSearchTerm; 
+        });
+
         setFilteredPosts(filtered);
         setCurrentPage(0); 
     };
 
     const handleClick = () => {
         navigate("/post-write");
+    };
+
+    const handleCardClick = (postId) => {
+        navigate(`/postInfo/${postId}`);
     };
 
     const offset = currentPage * postsPerPage;
@@ -71,47 +106,99 @@ const Post = () => {
         setCurrentPage(selected);
     };
 
+    // 게시글의 이미지를 서버에서 가져오는 함수
+    const fetchPostImage = async (postId) => {
+        try {
+            const response = await auth.getPostImage(postId); 
+            const imageUrl = response.data.url;
+            setPostImages(prevImages => ({ ...prevImages, [postId]: imageUrl }));
+        } catch (error) {
+            console.error("Error fetching post image:", error);
+        }
+    };
+
     return (
         <>
             <Header />
             <div className='container'>
                 <div className='title-button-container'>
                     <BsPencilSquare style={{ margin: '15px' }} />
-                    <h2>게시판</h2>
+                    <h2>커뮤니티</h2>
+
                     <div className="search-and-button-container">
                         <form onSubmit={handleSearch} className="search-form">
                             <input 
                                 type="text" 
                                 value={searchTerm} 
                                 onChange={(e) => setSearchTerm(e.target.value)} 
-                                placeholder="검색할 제목을 입력하세요" 
+                                placeholder="키워드를 입력하세요" 
                                 className="search-input" 
                             />
+                            <input 
+                                type="date" 
+                                value={startDate} 
+                                onChange={(e) => setStartDate(e.target.value)} 
+                                className="date-input" 
+                            />
+                            <input 
+                                type="date" 
+                                value={endDate} 
+                                onChange={(e) => setEndDate(e.target.value)} 
+                                className="date-input" 
+                            />
+                            <button type="submit" className="search-button">
+                                검색
+                            </button>
                         </form>
-                        <button onClick={handleClick} className="create-post-button">새 글 작성</button>
+                        <button onClick={handleClick}>
+                            새 글 작성
+                        </button>
                     </div>
                 </div>
-                <hr/>
-                
-                {/* 카드 리스트 */}
+
+                <hr style={{marginBottom : "50px;"}} />
+
                 <div className="card-container">
                     {currentPagePosts.map((post, index) => (
-                        <div key={index} className="card">
-                            <h3><Link to={`/postInfo/${post.id}`}>{post.title}</Link></h3>
-                            <div className="separator"></div>
-                            <p>{post.content}</p>
-                            <div className="bottom-details">
-                            <div className="post-details">
-                                <span>작성자: {post.writer}</span>
-                                <span>생성일: {formatDate(post.createdDate)}</span>
-                                <span>조회수: {post.count}</span>
+                        <div key={index} className="card" onClick={() => handleCardClick(post.id)}>
+                            <div>
+                                <h3> {post.title}</h3>
+                                <div className="postImage">
+                                {postImages[post.id] ? (
+                                    <img 
+                                        src={postImages[post.id]} 
+                                        alt="postImage" 
+                                        className="postImage" 
+                                    />
+                                ) : (
+                                    <p>이미지를 불러올 수 없습니다.</p>
+                                )}
+                               </div>
+                                <div className="card-footer">
+                                <p><TbPencilCheck className="icon" /> {post.writer}</p>
+                                
+                                
+                                
+
+                                </div>
+                                <p style={{fontSize:"12px", color:"gray"}}><CiCalendar className="icon" /> {post.startDate} ~ {post.endDate}</p>
+                                
+                                <hr className='postHr'></hr>
+                                <div className="right-info">
+                                    <p>작성일: {formatDate(post.createdDate)}</p>
+                                    <p>조회수: {post.count}</p>
+                                </div>
                             </div>
-                            </div>
+
+                            
+{/* 
+                            <p className='postContent'><MdContentPaste className="icon" /> {post.content.length > 100 ? post.content.substring(0, 100) + "..." : post.content}</p>
+                            
+                             */}
                         </div>
                     ))}
                 </div>
 
-                {/* 페이징 */}
                 <ReactPaginate
                     previousLabel={"이전"}
                     nextLabel={"다음"}

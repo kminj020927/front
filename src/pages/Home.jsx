@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'; 
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
@@ -20,10 +19,6 @@ const Home = () => {
     const goToPostForm = () => {
         navigate('/post');
     };
-    const goToPost77 = () => {
-        navigate('/post77');
-    };
-    
     
     const [posts, setPosts] = useState([]);  // 게시글 목록
     const [regionWeather, setRegionWeather] = useState([]);  // Important regions' weather
@@ -62,14 +57,13 @@ const Home = () => {
                         <span>가보자Go</span>에 오신걸 환영합니다
                     </div>
                     <div className="home-contents">
-                    저희 가보자Go는 여행자들을 위한  커뮤니티 사이트입니다<br/><br/>
-                    국내, 해외 모든 여행자들에게  필요하고,<br/> 
-                    부족한 여행 정보들을 제공하고 있습니다.<br/>
-                    새롭고 다양한 사람들과 소통하고 <br/>
-                    동행할 수 있습니다<br/>
-                    <br/>
-                    여러분의 재미있는 여행 이야기를 들려주세요<br/>
-
+                        저희 가보자Go는 여행자들을 위한  커뮤니티 사이트입니다<br/><br/>
+                        국내, 해외 모든 여행자들에게  필요하고,<br/> 
+                        부족한 여행 정보들을 제공하고 있습니다.<br/>
+                        새롭고 다양한 사람들과 소통하고 <br/>
+                        동행할 수 있습니다<br/>
+                        <br/>
+                        여러분의 재미있는 여행 이야기를 들려주세요<br/>
                     </div>
                     <button className="write-post-btn" onClick={goToPostForm}>
                         가보자Go
@@ -77,37 +71,33 @@ const Home = () => {
                 </div>
                 
                 <div className='layout-container'>
-                    <WeatherInfo className="weather-info" />
-                    <div className='home-container'>
-                        <h2>최근 동행 게시글</h2><br/>
-                        <hr/>
-                        {posts.length === 0 ? (
+                    <div className='combined-container'>
+                        <WeatherInfo className="weather-info" />
+                        <div className='home-container'>
+                            <h2>최근 동행 게시글</h2><br/>
+                            <hr/>
+                            {posts.length === 0 ? (
                                 <div>게시글이 없습니다.</div>
                             ) : (
                                 posts.map((post) => (
                                     <div className="post-card" key={post.id}>
                                         <Link to={`/postInfo/${post.id}`}>
                                             <div className="post-card-content">
-                                                {/* 제목 */}
                                                 <div className="post-card-title">
                                                     <LuSubtitles className="icon" /> {post.title}
                                                 </div>
-
-                                                {/* 기간 */}
                                                 <div className="post-card-period">
                                                     <span><CiCalendar className="icon" /> {post.startDate} ~ {post.endDate}</span>  
                                                 </div><br/>
-
-                                                {/* 작성자와 작성 기간 */}
                                                 <div className="post-card-details">
                                                     <div>{new Date(post.createdDate).toLocaleDateString()} {post.writer} </div>
                                                 </div>
-                                                
                                             </div>
                                         </Link>
                                     </div>
                                 ))
                             )}
+                        </div>
                     </div>
                 </div>
             </div>

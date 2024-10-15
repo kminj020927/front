@@ -198,7 +198,7 @@
   border: 2px none;
   padding: 10px;
   border-radius: 8px;
-  background-color: #f5efef;
+  background-color: #f4f2f0;
   font-size: 14px;
   margin-bottom: 20px;
 }
@@ -226,7 +226,7 @@
 .hash-tag li {
   margin-right: 10px; /* 태그 간의 간격을 조정 */
   padding: 8px 12px; /* 패딩 추가 */
-  background-color: #e6d1d1; /* 배경색 추가 */
+  background-color: #f4f2f0; /* 배경색 추가 */
   color: black; /* 글자색 흰색으로 설정 */
   border-radius: 20px; /* 둥근 모서리 */
   font-size: 14px; /* 폰트 크기 조정 */

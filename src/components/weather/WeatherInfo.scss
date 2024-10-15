@@ -10,13 +10,14 @@
     font-weight: bold;
     color: #00773e; // Light green theme for headers
     margin-bottom: 24px;
+    text-align: center; // 중앙 정렬
   }
 
   #parentRegionSelect,
   #childRegionSelect {
     width: 220px;
     padding: 12px;
-    margin: 12px;
+    margin: 12px 0; // 상하 여백 추가
     font-size: 16px;
     border: 1px solid #b3e5c8; // Lighter green borders
     border-radius: 6px;
@@ -25,13 +26,12 @@
     background-color: #f1f8f4;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
 
-  #parentRegionSelect:focus,
-  #childRegionSelect:focus {
-    border-color: #66afe9;
-    outline: none;
-    box-shadow: 0 0 6px rgba(102, 175, 233, 0.7);
+    &:focus {
+      border-color: #66afe9;
+      outline: none;
+      box-shadow: 0 0 6px rgba(102, 175, 233, 0.7);
+    }
   }
 
   #weatherInfoText {
@@ -43,34 +43,35 @@
     .weather-details {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start; // 왼쪽 정렬로 변경
       border: 1px solid #d1e7dd; // Subtle green borders for better readability
       border-radius: 8px;
       padding: 20px;
       background-color: #fafdfc; // Slightly lighter background
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05); // Soft shadow for depth
-    }
+      width: 100%; // 전체 폭 사용
 
-    .weather-detail {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      margin: 12px 0;
-      font-size: 1.1rem;
-      color: #555;
-    }
+      .weather-detail {
+        display: flex;
+        justify-content: space-between;
+        width: 100%; // 부모 요소의 폭을 100%로 설정
+        margin: 12px 0;
+        font-size: 1.1rem;
+        color: #555;
 
-    .weather-label {
-      font-weight: 600;
-      color: #006944; // Darker green for labels
-      margin-right: 12px;
-      width: 110px; 
-      text-align: right;
-    }
+        .weather-label {
+          font-weight: 600;
+          color: #006944; // Darker green for labels
+          margin-right: 12px;
+          width: 110px; 
+          text-align: right;
+        }
 
-    .weather-value {
-      flex-grow: 1;
-      text-align: left;
+        .weather-value {
+          flex-grow: 1;
+          text-align: left; // 왼쪽 정렬
+        }
+      }
     }
   }
 

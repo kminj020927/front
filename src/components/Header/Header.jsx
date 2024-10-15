@@ -43,7 +43,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <li style={{ color: '#4CAF50' }}>{userInfo?.username} 님 환영합니다!!</li>
+              <li style={{ color: '#3a9f97' }}>{userInfo?.username} 님 환영합니다</li>
               <li className="dropdown">
                 {/* 로그인 후에도 게시판 드롭다운 */}
                 <button className="dropbtn" onClick={toggleDropdown}>게시판</button>

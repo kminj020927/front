@@ -19,11 +19,12 @@ const WeatherInfo = () => {
                 if (response.data.length > 0) {
                     const initialParentRegion = response.data[0].parentRegion; // 첫 번째 부모 지역 선택
                     setSelectedParentRegion(initialParentRegion);
-                    setChildRegions(response.data.filter(region => region.parentRegion === initialParentRegion));
-                    
+                    const newChildRegions = response.data.filter(region => region.parentRegion === initialParentRegion);
+                    setChildRegions(newChildRegions);
+
                     // 첫 번째 자식 지역 선택
-                    if (childRegions.length > 0) {
-                        setSelectedChildRegion(childRegions[0].id); // 첫 번째 자식 지역 선택
+                    if (newChildRegions.length > 0) {
+                        setSelectedChildRegion(newChildRegions[0].id); // 첫 번째 자식 지역 선택
                     }
                 }
             } catch (error) {
