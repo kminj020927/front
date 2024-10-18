@@ -52,7 +52,7 @@
   overflow-y: auto; /* 내용이 넘칠 경우 스크롤 */
 }
 
-/* 버튼들을 오른쪽으로 배치 */
+/* 게시글 버튼들을 오른쪽으로 배치 */
 .post-buttons {
   margin-top: 20px;
   display: flex;
@@ -60,20 +60,36 @@
 }
 
 .btn--post {
-  padding: 10px 20px;
-  background-color: lightseagreen;
-  color: white;
-  border: none;
+  padding: 5px 10px; /* 크기 줄임 */
+  background-color: transparent; /* 배경색 제거 */
+  color: lightseagreen; /* 텍스트 색상만 유지 */
+  border: 1px solid lightseagreen; /* 테두리만 추가 */
   border-radius: 8px;
   cursor: pointer;
-  font-family: 'Malgun Gothic', sans-serif; ;
-  font-size: 16px;
-  margin: 10px 5px;
-  transition: background-color 0.3s ease;
+  font-family: 'Malgun Gothic', sans-serif;
+  font-size: 14px; /* 폰트 크기 줄임 */
+  margin: 5px; /* 마진 조정 */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn--post:hover {
-  background-color: lightseagreen;
+  background-color: lightseagreen; /* 호버 시 배경색 추가 */
+  color: white; /* 호버 시 텍스트 색상 변경 */
+}
+
+/* 댓글 수정, 삭제 버튼 영역 스타일 */
+.comment-actions button {
+  padding: 3px 8px; /* 크기를 더 줄임 */
+  background-color: transparent; /* 배경색 제거 */
+  color: lightseagreen; /* 텍스트 색상 */
+  border: 1px solid lightseagreen; /* 테두리만 추가 */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.comment-actions button:hover {
+  background-color: lightseagreen; /* 호버 시 배경색 추가 */
+  color: white; /* 호버 시 텍스트 색상 변경 */
 }
 
 
@@ -139,18 +155,7 @@
   gap: 10px;
 }
 
-.comment-actions button {
-  padding: 5px 10px;
-  background-color: lightseagreen;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
-.comment-actions button:hover {
-  background-color: #3e8e41;
-}
 
 .btn--comment-cancel {
   background-color: lightseagreen;

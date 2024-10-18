@@ -25,6 +25,7 @@ const PostInfo = () => {
     const [replyComment, setReplyComment] = useState('');  // 대댓글 입력 상태
     const [replyingToCommentId, setReplyingToCommentId] = useState(null);  // 대댓글 작성 중인 댓글 ID
 
+    const [postImage, setPostImage] = useState(null);
 
     console.log(id);
 
@@ -250,12 +251,25 @@ const PostInfo = () => {
         return `${year}-${month}-${day} ${hours}:${minutes}`;
     };
 
+    const fetchPostImage = async (postId) => {
+        try {
+            const response = await auth.getPostImage(postId); 
+            const data = response.data;
+            console.log("Fetched image URL:", data.url);
+            setPostImage(data.url);
+        } catch (error) {
+            console.error("Error fetching post image:", error);
+        }
+    };
+
 
     useEffect(() => {
         if (id) {
             getPostInfo(id);
             getCommentsList(id);
+            fetchPostImage(id);
         }
+
         getUserInfo();
     }, [id]);
 
@@ -286,143 +300,104 @@ const PostInfo = () => {
     };
 
     const handleMap = () => {
-        navigate(`/kakao/search`, { state: { place: postInfo.place } });
+        navigate(`/kakao/search`, { state: { mapPlace: postInfo.place } });
     };
     
     return (
         <>
          <Header/>
 
-         <div className='postInfo_container'>
-            <div className='post-header'>
-                <h1 className='post-title'>{postInfo.title}</h1>
-                
-                <div className='post-meta'>
-                    <span className='post-author'>작성자: {postInfo.writer}  <GoTriangleRight /> <span className='profileInfo'>프로필 확인</span></span>
-                    <span className='post-count'>조회수: {postInfo.count}</span>
+   
+
+            <div className='postInfo_container'>
+                <div className='post-header'>
+                    <h1 className='post-title'>{postInfo.title}</h1>
+                    <div className='post-meta'>
+                        <span className='post-author'>
+                            작성자: {postInfo.writer} 
+                            <GoTriangleRight /> 
+                            <span className='profileInfo'>프로필 확인</span>
+                        </span>
+                        <span className='post-count'>조회수: {postInfo.count}</span>
+                    </div>
+                    <div className='post-dates'>
+                        <span>작성: {formatDate(postInfo.createdDate)}</span>
+                        <span>수정: {formatDate(postInfo.updatedDate)}</span>
+                    </div>
                 </div>
-        
-                <div className='post-dates'>
-                    <span>작성: {formatDate(postInfo.createdDate)}</span>
-                    <span>수정: {formatDate(postInfo.updatedDate)}</span>
+
+                <hr/>
+
+                <div className="info-box" onClick={handleMap}>
+                    <span><CiCalendar /> {postInfo.startDate} ~ {postInfo.endDate}</span>
+                    <span><FaLocationDot /> {postInfo.place}</span>
                 </div>
-            </div>
 
-            <hr/>
+                <div className="Image">
+                    {postImage ? (
+                        <img src={postImage} alt="postImage" className="postImage" />
+                    ) : (
+                        <p>이미지를 불러올 수 없습니다.</p>
+                    )}
+                </div>
 
-            <div className="info-box" onClick={handleMap}>
-                <span><CiCalendar />  {postInfo.startDate} ~ {postInfo.endDate}</span>
-                <span><FaLocationDot /> {postInfo.place}</span>
-            </div>
+                <div className='post-content'>
+                    <p>[ 여행 소개 ]</p>
+                    <p>{postInfo.content}</p>
+                </div>
 
-            <div className='post-content'>
-                <p>여행 소개</p><br/>
-                <p>{postInfo.content}</p>
-            </div>
+                <div className='hash-tag'>
+                    <ul>
+                        {postInfo.hashtags.length > 0 
+                            ? postInfo.hashtags.map((tag, index) => <li key={index}>#{tag}</li>)
+                            : <p>해시태그가 없습니다.</p>
+                        }
+                    </ul>
+                </div>
 
-            <hr/>
+                {/* Post buttons */}
+                <div className='post-buttons'>
+                    <button className='btn--post' onClick={handleEditClick}>게시글 수정</button>
+                    <button className='btn--post' onClick={() => deletePost(postInfo.id)}>게시글 삭제</button>
+                    <button className='btn--post' onClick={handlePostClick}>게시글 목록</button>
+                </div>
 
-            <div className='hash-tag'>
-                <ul>
-                {postInfo.hashtags && postInfo.hashtags.length > 0 ? (
-                    postInfo.hashtags.map((tag, index) => (
-                    <li key={index}>#{tag}</li>
-                    ))
-                ) : (
-                    <p>해시태그가 없습니다.</p>
-                )}
-                </ul>
-            </div>
-
-            <div className='post-buttons'>
-                <button type='submit' className='btn--post' onClick={handleEditClick}>게시글 수정</button>
-                <button type='button' className='btn--post' onClick={() => deletePost(postInfo.id)}>게시글 삭제</button>
-                <button type='button' className='btn--post' onClick={handlePostClick}>게시글 목록</button>
-            </div>
-
-            <div className="comments-section">
+                {/* Comments Section */}
+                <div className="comments-section">
                     <form onSubmit={handleCommentSubmit} className="comment-form">
                         <textarea 
                             value={comment} 
                             onChange={(e) => setComment(e.target.value)} 
                             placeholder="댓글을 입력하세요" 
-                            className="comment-textarea"
-                            rows="2"
+                            className="comment-textarea" 
+                            rows="2" 
                         />
                         <button type="submit" className="btn--comment-submit">댓글 작성</button>
                     </form>
 
+                    {/* Comments list */}
                     <div className="comments-list">
-
                         {commentsList.map((commentObj) => (
                             <div key={commentObj.id} className="comment">
-                                {editingCommentId === commentObj.id ? (
-                                    <>
-                                        {/* 댓글 수정 중일 때의 입력란 */}
-                                        <textarea
-                                            value={editingCommentText}
-                                            onChange={(e) => setEditingCommentText(e.target.value)}
-                                            className="comment-textarea"
-                                        />
-                                        <button onClick={() => handleUpdateComment(commentObj.id)} className="btn--comment-submit">수정 완료</button>
-                                        <button onClick={handleCancelEdit} className="btn--comment-cancel">취소</button>
-                                    </>
-                                ) : (
-                                    <>
-                                        <p>{commentObj.author} : {commentObj.comment}</p>
-                                        <p className="comment-date">{formatDate(commentObj.createdDate)}</p>
-
-                                        {/* 댓글 수정, 삭제, 대댓글 버튼 */}
-                                        <div className="comment-actions">
-                                            {/* 수정, 삭제 버튼은 작성자와 관리자가 볼 수 있음 */}
-                                            {(userInfo?.username === commentObj.author || userInfo?.username === 'admin0515') && (
-                                                <>
-                                                    {userInfo?.username === commentObj.author && (
-                                                        <button onClick={() => handleEditCommentClick(commentObj.id, commentObj.comment)}>수정</button>
-                                                    )}
-                                                    <button onClick={() => handleDeleteComment(commentObj.id)}>삭제</button>
-                                                </>
-                                            )}
-                                            {/* 대댓글 버튼은 모든 사용자가 볼 수 있음 */}
-                                            <button onClick={() => handleReplyClick(commentObj.id)}>답글</button>
-                                        </div>
-
-                                        {/* 대댓글 작성 폼 - 클릭한 댓글에만 표시 */}
-                                        {replyingToCommentId === commentObj.id && (
-                                        <form onSubmit={handleReplySubmit} className="reply-form">
-                                            <textarea
-                                                value={replyComment}
-                                                onChange={(e) => setReplyComment(e.target.value)}
-                                                placeholder="대댓글을 입력하세요"
-                                                className="comment-textarea"
-                                                rows="2"
-                                            />
-                                            <div className="reply-buttons">
-                                                <button type="submit" className="btn--comment-submit">답글</button>
-                                                <button type="button" onClick={() => setReplyingToCommentId(null)} className="btn--comment-cancel">취소</button>
-                                            </div>
-                                        </form>
+                                {/* Comment content */}
+                                <p>{commentObj.author}: {commentObj.comment}</p>
+                                <p className="comment-date">{formatDate(commentObj.createdDate)}</p>
+                                {/* Actions */}
+                                <div className="comment-actions">
+                                    {(userInfo?.username === commentObj.author || userInfo?.username === 'admin0515') && (
+                                        <>
+                                            <button onClick={() => handleEditCommentClick(commentObj.id, commentObj.comment)}>수정</button>
+                                            <button onClick={() => handleDeleteComment(commentObj.id)}>삭제</button>
+                                        </>
                                     )}
-
-                                    {commentObj.replies && (
-                                        <div className="replies-list">
-                                            {commentObj.replies.map((reply) => (
-                                            <div key={reply.id} className="reply">
-                                                <p>{reply.author} : {reply.comment}</p>
-                                                <p className="reply-date">{formatDate(reply.createdDate)}</p>
-                                            </div>
-                                    ))}
-                                    </div>
-                                    )}
-
-                                    </>
-                                )}
+                                    <button onClick={() => handleReplyClick(commentObj.id)}>답글</button>
+                                </div>
                             </div>
-                        )
-                        )}
+                        ))}
                     </div>
                 </div>
             </div>
+
         </>
     );
 };
