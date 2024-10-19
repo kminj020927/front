@@ -28,6 +28,7 @@ const Post = () => {
 
     // 각 게시글의 이미지 상태를 관리하기 위한 상태 추가
     const [postImages, setPostImages] = useState({});
+    
 
     const getPostList = async () => {
         try {
